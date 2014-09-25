@@ -13,7 +13,6 @@ namespace MusicBrowser
         public Nullable<Int32> Id;
         public string Title;
         public Nullable<Int32> MainRelease;
-        public string Uri;
         public Nullable<Int32> Year;
         public string DataQuality;
     }

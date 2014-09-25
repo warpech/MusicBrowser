@@ -18,186 +18,191 @@ namespace MusicBrowser
 
         static void Main()
         {
-            // Create a reader and move to the content.
-            using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
+            Handle.GET("/load-data", () =>
             {
-                // the reader must be in the Interactive state in order to
-                // Create a LINQ to XML tree from it.
-                nodeReader.MoveToContent();
+                var count = 0;
+                var limit = 5;
 
-                Db.Transaction(() =>
+                // Create a reader and move to the content.
+                using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
                 {
-                    Db.SlowSQL("DELETE FROM MusicBrowser.Release");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseStyle");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseGenre");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseVideo");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseArtist");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseImage");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.Style");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.Genre");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.Video");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.Artist");
-                    Db.SlowSQL("DELETE FROM MusicBrowser.Image");
-                });
+                    // the reader must be in the Interactive state in order to
+                    // Create a LINQ to XML tree from it.
+                    nodeReader.MoveToContent();
 
-                bool isOnNode = nodeReader.ReadToDescendant("master");
-                while (isOnNode)
-                {
-                    var element = (XElement)XNode.ReadFrom(nodeReader);
-                    var t = new Transaction();
-
-                    t.Add(() =>
+                    Db.Transaction(() =>
                     {
-                        Release release = new Release();
-                        release.Id = Convert.ToInt32(element.Attribute("id").Value);
+                        Db.SlowSQL("DELETE FROM MusicBrowser.Release");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseStyle");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseGenre");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseVideo");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseArtist");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseImage");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.Style");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.Genre");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.Video");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.Artist");
+                        Db.SlowSQL("DELETE FROM MusicBrowser.Image");
+                    });
 
-                        XElement node;
+                    bool isOnNode = nodeReader.ReadToDescendant("master");
+                    while (isOnNode)
+                    {
+                        var element = (XElement)XNode.ReadFrom(nodeReader);
+                        var t = new Transaction();
 
-                        node = element.XPathSelectElement("title");
-                        if (Program.ValueExists(node))
+                        t.Add(() =>
                         {
-                            release.Title = node.Value;
-                        }
+                            Release release = new Release();
+                            release.Id = Convert.ToInt32(element.Attribute("id").Value);
 
-                        node = element.XPathSelectElement("main_release");
-                        if (Program.ValueExists(node))
-                        {
-                            release.MainRelease = Convert.ToInt32(node.Value);
-                        }
-
-                        node = element.XPathSelectElement("uri");
-                        if (Program.ValueExists(node))
-                        {
-                            release.Uri = node.Value;
-                        }
-
-                        node = element.XPathSelectElement("year");
-                        if (Program.ValueExists(node))
-                        {
-                            release.Year = Convert.ToInt32(node.Value);
-                        }
-
-                        node = element.XPathSelectElement("data_quality");
-                        if (Program.ValueExists(node))
-                        {
-                            release.DataQuality = node.Value;
-                        }
-
-                        foreach (XElement videoElement in element.XPathSelectElements("videos/video"))
-                        {
-                            Video video = new Video();
-                            video.Duration = Convert.ToInt32(videoElement.Attribute("duration").Value);
-                            video.Embed = Convert.ToBoolean(videoElement.Attribute("embed").Value);
-                            video.Uri = videoElement.Attribute("src").Value;
+                            XElement node;
 
                             node = element.XPathSelectElement("title");
                             if (Program.ValueExists(node))
                             {
-                                video.Title = node.Value;
+                                release.Title = node.Value;
                             }
 
-                            new ReleaseVideo()
-                            {
-                                Release = release,
-                                Video = video
-                            };
-                        }
-
-                        foreach (XElement artistElement in element.XPathSelectElements("artists/artist"))
-                        {
-                            Artist artist = new Artist();
-
-                            node = element.XPathSelectElement("id");
+                            node = element.XPathSelectElement("main_release");
                             if (Program.ValueExists(node))
                             {
-                                artist.Id = Convert.ToInt32(node.Value);
+                                release.MainRelease = Convert.ToInt32(node.Value);
                             }
 
-                            node = element.XPathSelectElement("name");
+                            node = element.XPathSelectElement("year");
                             if (Program.ValueExists(node))
                             {
-                                artist.Name = node.Value;
+                                release.Year = Convert.ToInt32(node.Value);
                             }
 
-                            new ReleaseArtist()
+                            node = element.XPathSelectElement("data_quality");
+                            if (Program.ValueExists(node))
                             {
-                                Release = release,
-                                Artist = artist
-                            };
-                        }
+                                release.DataQuality = node.Value;
+                            }
 
-                        foreach (XElement imageElement in element.XPathSelectElements("images/image"))
-                        {
-                            Image image = new Image();
-                            image.Width = Convert.ToInt32(imageElement.Attribute("width").Value);
-                            image.Height = Convert.ToInt32(imageElement.Attribute("height").Value);
-                            image.Type = imageElement.Attribute("type").Value;
-                            image.Uri = imageElement.Attribute("uri").Value;
-                            image.Uri150 = imageElement.Attribute("uri150").Value;
-
-                            new ReleaseImage()
+                            foreach (XElement videoElement in element.XPathSelectElements("videos/video"))
                             {
-                                Release = release,
-                                Image = image
-                            };
-                        }
+                                Video video = new Video();
+                                video.Duration = Convert.ToInt32(videoElement.Attribute("duration").Value);
+                                video.Embed = Convert.ToBoolean(videoElement.Attribute("embed").Value);
+                                video.Uri = videoElement.Attribute("src").Value;
 
-                        foreach (XElement styleElement in element.XPathSelectElements("styles/style"))
-                        {
-                            String name = styleElement.Value;
-
-                            Style style = Db.SQL<Style>("SELECT s FROM MusicBrowser.Style s WHERE Name = ?", name).First;
-                            if (style == null)
-                            {
-                                style = new Style()
+                                node = element.XPathSelectElement("title");
+                                if (Program.ValueExists(node))
                                 {
-                                    Name = name
+                                    video.Title = node.Value;
+                                }
+
+                                new ReleaseVideo()
+                                {
+                                    Release = release,
+                                    Video = video
                                 };
                             }
 
-                            new ReleaseStyle()
+                            foreach (XElement artistElement in element.XPathSelectElements("artists/artist"))
                             {
-                                Release = release,
-                                Style = style
-                            };
-                        }
+                                Artist artist = new Artist();
 
-                        foreach (XElement genreElement in element.XPathSelectElements("genres/genre"))
-                        {
-                            String name = genreElement.Value;
-
-                            Genre genre = Db.SQL<Genre>("SELECT s FROM MusicBrowser.Genre s WHERE Name = ?", name).First;
-                            if (genre == null)
-                            {
-                                genre = new Genre()
+                                node = element.XPathSelectElement("id");
+                                if (Program.ValueExists(node))
                                 {
-                                    Name = name
+                                    artist.Id = Convert.ToInt32(node.Value);
+                                }
+
+                                node = element.XPathSelectElement("name");
+                                if (Program.ValueExists(node))
+                                {
+                                    artist.Name = node.Value;
+                                }
+
+                                new ReleaseArtist()
+                                {
+                                    Release = release,
+                                    Artist = artist
                                 };
                             }
 
-                            new ReleaseGenre()
+                            foreach (XElement imageElement in element.XPathSelectElements("images/image"))
                             {
-                                Release = release,
-                                Genre = genre
-                            };
-                        }
-                    });
+                                Image image = new Image();
+                                image.Width = Convert.ToInt32(imageElement.Attribute("width").Value);
+                                image.Height = Convert.ToInt32(imageElement.Attribute("height").Value);
+                                image.Type = imageElement.Attribute("type").Value;
+                                image.Uri = imageElement.Attribute("uri").Value;
+                                image.Uri150 = imageElement.Attribute("uri150").Value;
 
-                    foreach (XElement e in element.DescendantsAndSelf())
-                    {
-                        Debug.WriteLine("{0}{1}",
-                            ("".PadRight(e.Ancestors().Count() * 2) + e.Name).PadRight(20),
-                            (e.Value).PadRight(5));
+                                new ReleaseImage()
+                                {
+                                    Release = release,
+                                    Image = image
+                                };
+                            }
+
+                            foreach (XElement styleElement in element.XPathSelectElements("styles/style"))
+                            {
+                                String name = styleElement.Value;
+
+                                Style style = Db.SQL<Style>("SELECT s FROM MusicBrowser.Style s WHERE Name = ?", name).First;
+                                if (style == null)
+                                {
+                                    style = new Style()
+                                    {
+                                        Name = name
+                                    };
+                                }
+
+                                new ReleaseStyle()
+                                {
+                                    Release = release,
+                                    Style = style
+                                };
+                            }
+
+                            foreach (XElement genreElement in element.XPathSelectElements("genres/genre"))
+                            {
+                                String name = genreElement.Value;
+
+                                Genre genre = Db.SQL<Genre>("SELECT s FROM MusicBrowser.Genre s WHERE Name = ?", name).First;
+                                if (genre == null)
+                                {
+                                    genre = new Genre()
+                                    {
+                                        Name = name
+                                    };
+                                }
+
+                                new ReleaseGenre()
+                                {
+                                    Release = release,
+                                    Genre = genre
+                                };
+                            }
+                        });
+
+                        foreach (XElement e in element.DescendantsAndSelf())
+                        {
+                            Debug.WriteLine("{0}{1}",
+                                ("".PadRight(e.Ancestors().Count() * 2) + e.Name).PadRight(20),
+                                (e.Value).PadRight(5));
+                        }
+
+                        t.Commit();
+
+                        if (!nodeReader.IsStartElement("master"))
+                            isOnNode = nodeReader.ReadToNextSibling("master");
+
+                        count++;
+                        if (count == limit)
+                        {
+                            break;
+                        }
                     }
-
-                    t.Commit();
-
-                    if (!nodeReader.IsStartElement("master"))
-                        isOnNode = nodeReader.ReadToNextSibling("master");
-
                 }
-            }
-            //Environment.Exit(0);
+                return 200;
+            });
         }
     }
 }
