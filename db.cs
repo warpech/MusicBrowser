@@ -15,6 +15,11 @@ namespace MusicBrowser
         public Nullable<Int32> MainRelease;
         public Nullable<Int32> Year;
         public string DataQuality;
+        public QueryResultRows<Style> Styles { get { return Db.SQL<Style>("SELECT r.Style FROM ReleaseStyle r WHERE r.Release=?", this); } }
+        public QueryResultRows<Genre> Genres { get { return Db.SQL<Genre>("SELECT r.Genre FROM ReleaseGenre r WHERE r.Release=?", this); } }
+        public QueryResultRows<Video> Videos { get { return Db.SQL<Video>("SELECT r.Video FROM ReleaseVideo r WHERE r.Release=?", this); } }
+        public QueryResultRows<Artist> Artists { get { return Db.SQL<Artist>("SELECT r.Artist FROM ReleaseArtist r WHERE r.Release=?", this); } }
+        public QueryResultRows<Image> Images { get { return Db.SQL<Image>("SELECT r.Image FROM ReleaseImage r WHERE r.Release=?", this); } }
     }
 
     [Database]
