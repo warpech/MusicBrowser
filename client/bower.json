@@ -1,0 +1,7 @@
+{
+  "name": "MusicBrowser",
+  "dependencies": {
+    "juicy-jsoneditor": "~0.0.2",
+    "puppet-js": "~0.0.3"
+  }
+}
