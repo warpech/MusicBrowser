@@ -34,6 +34,15 @@ namespace MusicBrowser
                 Master m = Master.GET("/master");
                 ReleasesPage p = new ReleasesPage();
                 p.Releases = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 50);
+
+                foreach (var release in p.Releases)
+                {
+                    foreach (var image in release.Images)
+                    {
+                        image.Uri = image.Uri.Replace("http://api.discogs.com/images/", "http://s.pixogs.com/image/");
+                    }
+                }
+
                 m.Application = p;
                 return m;
             });
