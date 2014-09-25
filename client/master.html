@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>MusicBrowser</title>
+
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/puppet-js/src/puppet-js.html">
+    <link rel="import" href="bower_components/juicy-jsoneditor/src/juicy-jsoneditor.html">
+    <link rel="stylesheet" type="text/css" href="bower_components/jsoneditor/jsoneditor.min.css">
+</head>
+<body>
+    
+    <template id="root" bind>
+        <juicy-jsoneditor json="{{Application}}"></juicy-jsoneditor>
+    </template>
+
+    <puppet-js ref="root"></puppet-js>
+
+</body>
+</html>

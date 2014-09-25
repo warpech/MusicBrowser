@@ -1,0 +1,16 @@
+{
+  Releases: [{
+    Id: 0,
+    Year: 0,
+	Title: "",
+	Artists: [{
+	  Name: "" 
+	}],
+	Images: [{
+	  Uri: "" 
+	}],
+	Videos: [{
+	  Uri: "" 
+	}]
+  }]
+}

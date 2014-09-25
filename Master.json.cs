@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Starcounter;
 using System.Xml;
 using System.Linq;
@@ -9,7 +9,8 @@ using System.Diagnostics;
 
 namespace MusicBrowser
 {
-    class Program
+    [Master_json]
+    partial class Master : Page
     {
         static bool ValueExists(XElement node)
         {
@@ -18,6 +19,25 @@ namespace MusicBrowser
 
         static void Main()
         {
+            Handle.GET("/master", (Request req) =>
+            {
+                Master m = new Master()
+                {
+                    Html = "/master.html",
+                };
+                m.Session = new Session();
+                return m;
+            });
+
+            Handle.GET("/", () =>
+            {
+                Master m = Master.GET("/master");
+                ReleasesPage p = new ReleasesPage();
+                p.Releases = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 50);
+                m.Application = p;
+                return m;
+            });
+
             Handle.GET("/load-data", () =>
             {
                 var count = 0;
@@ -59,25 +79,25 @@ namespace MusicBrowser
                             XElement node;
 
                             node = element.XPathSelectElement("title");
-                            if (Program.ValueExists(node))
+                            if (Master.ValueExists(node))
                             {
                                 release.Title = node.Value;
                             }
 
                             node = element.XPathSelectElement("main_release");
-                            if (Program.ValueExists(node))
+                            if (Master.ValueExists(node))
                             {
                                 release.MainRelease = Convert.ToInt32(node.Value);
                             }
 
                             node = element.XPathSelectElement("year");
-                            if (Program.ValueExists(node))
+                            if (Master.ValueExists(node))
                             {
                                 release.Year = Convert.ToInt32(node.Value);
                             }
 
                             node = element.XPathSelectElement("data_quality");
-                            if (Program.ValueExists(node))
+                            if (Master.ValueExists(node))
                             {
                                 release.DataQuality = node.Value;
                             }
@@ -90,7 +110,7 @@ namespace MusicBrowser
                                 video.Uri = videoElement.Attribute("src").Value;
 
                                 node = element.XPathSelectElement("title");
-                                if (Program.ValueExists(node))
+                                if (Master.ValueExists(node))
                                 {
                                     video.Title = node.Value;
                                 }
@@ -107,13 +127,13 @@ namespace MusicBrowser
                                 Artist artist = new Artist();
 
                                 node = element.XPathSelectElement("id");
-                                if (Program.ValueExists(node))
+                                if (Master.ValueExists(node))
                                 {
                                     artist.Id = Convert.ToInt32(node.Value);
                                 }
 
                                 node = element.XPathSelectElement("name");
-                                if (Program.ValueExists(node))
+                                if (Master.ValueExists(node))
                                 {
                                     artist.Name = node.Value;
                                 }

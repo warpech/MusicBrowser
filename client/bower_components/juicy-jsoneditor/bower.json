@@ -16,7 +16,7 @@
     "preview.png"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.3.4",
+    "polymer": "Polymer/polymer#~0.4.0",
     "jsoneditor": "~3.0.0"
   },
   "authors": [
