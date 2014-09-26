@@ -22,11 +22,20 @@ namespace MusicBrowser
         {
             Handle.GET("/master", (Request req) =>
             {
-                Master m = new Master()
+                Master m;
+                if (Session.Current == null)
                 {
-                    Html = "/master.html",
-                };
-                m.Session = new Session();
+                    m = new Master()
+                    {
+                        Html = "/master.html",
+                    };
+                    m.Session = new Session();
+                }
+                else
+                {
+                    m = (Master)Session.Current.Data;
+                }
+                
                 return m;
             });
 
