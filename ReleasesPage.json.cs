@@ -13,7 +13,7 @@ namespace MusicBrowser
             QueryResultRows<Release> albums;
             if (query != "")
             {
-                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ? OFFSET ?", query + "%", limit, 1);
+                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ?", query + "%", limit);
                 if (albums.First != null)
                 {
                     Albums = albums;
@@ -29,7 +29,7 @@ namespace MusicBrowser
             }
             else
             {
-                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ? OFFSET ?", limit, 1);
+                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", limit);
                 Albums = albums;
                 Count = (long)Db.SlowSQL<long>("SELECT COUNT(*) FROM MusicBrowser.Release m").First;
             }
