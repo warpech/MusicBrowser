@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8"/>
+  <title>MusicBrowser</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="bower_components/platform/platform.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/puppet-js/src/puppet-js.html">
+  <link rel="import" href="bower_components/juicy-jsoneditor/src/juicy-jsoneditor.html">
+  <!-- josdejong/jsoneditor#104 workaround-->
+  <link rel="stylesheet" type="text/css" href="bower_components/jsoneditor/jsoneditor.min.css">
+  <link rel="import" href="bower_components/google-youtube/google-youtube.html">
+  <link rel="import" href="bower_components/voice-elements/dist/voice-recognition.html">
+</head>
+<body>
+
+<div class="center">
+
+  <template id="root" bind>
+
+    <template bind="{{Application}}">
+      <!--<h3>-->
+      <!--Count: {{Count}}-->
+      <!--</h3>-->
+
+      <div style="display: flex">
+        <input value="{{Query$}}">
+        <voice-recognition id="rec" text="{{Query$}}"></voice-recognition>
+        <button onclick="document.getElementById('rec').start()">REC</button>
+      </div>
+
+      <div>
+        <template repeat="{{Albums}}">
+          <img onclick="this.templateInstance.model.Focus$ = null"
+               src="{{ImageUrl}}"
+               style="width: 75px; height: 75px; float: left">
+        </template>
+      </div>
+
+      <div>
+        <template bind="{{FocusedAlbum}}">
+          <h3>{{Artists[0].Name$}} - {{Title$}} ({{Year$}})</h3>
+
+          <style>
+            body {
+              background-image: url({{ImageUrl}});
+            }
+          </style>
+          <!--<img src="{{ImageUrl}}">-->
+
+          <google-youtube
+            videoid="{{VideoUrl}}"
+            height="100%"
+            width="100%">
+          </google-youtube>
+
+          <input type="number" value="{{Priority$}}">
+
+        </template>
+      </div>
+    </template>
+
+
+    <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
+  </template>
+
+  <puppet-js ref="root"></puppet-js>
+</div>
+
+</body>
+</html>
