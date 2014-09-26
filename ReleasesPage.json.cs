@@ -8,11 +8,12 @@ namespace MusicBrowser
     {
         public void SearchQuery(string query)
         {
-            var limit = 10;
+            int limit;
 
             QueryResultRows<Release> albums;
             if (query != "")
             {
+                limit = 20;
                 albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? ORDER BY Priority DESC FETCH ?", "%" + query + "%", limit);
                 if (albums.First != null)
                 {
@@ -30,7 +31,7 @@ namespace MusicBrowser
             else
             {
                 limit = 50;
-                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", limit);
+                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r ORDER BY Priority DESC FETCH ?", limit);
                 Albums = albums;
                 Count = (long)Db.SlowSQL<long>("SELECT COUNT(*) FROM MusicBrowser.Release m").First;
             }
