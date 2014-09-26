@@ -2,109 +2,111 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title>MusicBrowser</title>
+  <meta charset="utf-8"/>
+  <title>MusicBrowser</title>
 
-    <script src="bower_components/platform/platform.js"></script>
-    <link rel="import" href="bower_components/polymer/polymer.html">
-    <link rel="import" href="bower_components/puppet-js/src/puppet-js.html">
-    <link rel="import" href="bower_components/juicy-jsoneditor/src/juicy-jsoneditor.html">
-    <link rel="stylesheet" type="text/css" href="bower_components/jsoneditor/jsoneditor.min.css">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <link rel="import" href="bower_components/hot-table/src/hot-table.html">
-    <link rel="stylesheet" href="bower_components/jquery-handsontable/dist/jquery.handsontable.full.css">
-    <link rel="import" href="bower_components/google-youtube/google-youtube.html">
-    <link rel="import" href="bower_components/img-background/dist/img-background.html">
-    <link rel="import" href="bower_components/voice-elements/dist/voice-recognition.html">
+  <script src="bower_components/platform/platform.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/puppet-js/src/puppet-js.html">
+  <link rel="import" href="bower_components/juicy-jsoneditor/src/juicy-jsoneditor.html">
+  <link rel="stylesheet" type="text/css" href="bower_components/jsoneditor/jsoneditor.min.css">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <link rel="import" href="bower_components/hot-table/src/hot-table.html">
+  <link rel="stylesheet" href="bower_components/jquery-handsontable/dist/jquery.handsontable.full.css">
+  <link rel="import" href="bower_components/google-youtube/google-youtube.html">
+  <link rel="import" href="bower_components/img-background/dist/img-background.html">
+  <link rel="import" href="bower_components/voice-elements/dist/voice-recognition.html">
 
-    <style>
-        html, body {
-        height: 100%;
-        }
+  <style>
+    html, body {
+      height: 100%;
+    }
 
-        body {
-            font-family: Avenir, 'Arial Black', sans-serif;
-            margin:0;
-            padding: 20px; 
-            box-sizing: border-box;
+    body {
+      font-family: Avenir, 'Arial Black', sans-serif;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
 
-  background-color: #2F2727;
-  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#2F2727));
-  background: -webkit-radial-gradient(circle, #1a82f7, #2F2727);
-  background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
-  background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
-        }
+      background-color: #2F2727;
+      background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#2F2727));
+      background: -webkit-radial-gradient(circle, #1a82f7, #2F2727);
+      background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+      background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+    }
 
-        .center {
-height: calc(100% - 40px);
-    width: calc(100% - 40px);
-    display: table;
-        }
+    .center {
+      height: calc(100% - 40px);
+      width: calc(100% - 40px);
+      display: table;
+    }
 
-.Three-Dee{
-    display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-    height: 100%;
+    .Three-Dee {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      height: 100%;
 
-line-height: 1em;
-color: #fff;
-font-weight:bold;
-font-size: 167px;
-text-shadow:0px 0px 0 rgb(217,217,217),1px 1px 0 rgb(202,202,202),2px 2px 0 rgb(188,188,188),3px 3px 0 rgb(173,173,173),4px 4px 0 rgb(159,159,159),5px 5px 0 rgb(144,144,144), 6px 6px 0 rgb(130,130,130),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
-    </style>
+      line-height: 1em;
+      color: #fff;
+      font-weight: bold;
+      font-size: 167px;
+      text-shadow: 0px 0px 0 rgb(217, 217, 217), 1px 1px 0 rgb(202, 202, 202), 2px 2px 0 rgb(188, 188, 188), 3px 3px 0 rgb(173, 173, 173), 4px 4px 0 rgb(159, 159, 159), 5px 5px 0 rgb(144, 144, 144), 6px 6px 0 rgb(130, 130, 130), 7px 7px 6px rgba(0, 0, 0, 0.6), 7px 7px 1px rgba(0, 0, 0, 0.5), 0px 0px 6px rgba(0, 0, 0, .2);
+    }
+  </style>
 </head>
 <body>
-    
-    <div class="center">
-    <div class="Three-Dee ">
-No slides!
-    </div>
-            </div>
+
+<div class="center">
+  <div class="Three-Dee ">
+    No slides!
+  </div>
+</div>
 
 
-    <template id="root" xbind>
-        <template bind="{{Application}}">
-            Total: {{Count}}
+<template id="root" xbind>
+  <template bind="{{Application}}">
+    Total: {{Count}}
 
-            Dat source: Discogs
+    Dat source: Discogs
 
-            <input type="search" value="{{Query$}}" update-on="input">
-            <voice-recognition id="rec" text="{{Query$}}"></voice-recognition>
-            <button onmousedown="document.getElementById('rec').start()">
-            SAY
-            </button>
+    <input type="search" value="{{Query$}}" update-on="input">
+    <voice-recognition id="rec" text="{{Query$}}"></voice-recognition>
+    <button onmousedown="document.getElementById('rec').start()">
+      SAY
+    </button>
 
-            <template if="{{Count > 0}}">
-            <template bind="{{FocusedAlbum}}">
+    <template if="{{Count > 0}}">
+      <template bind="{{FocusedAlbum}}">
 
-                <!--<img-background src="{{ImageUrl}}"></img-background>-->
+        <!--<img-background src="{{ImageUrl}}"></img-background>-->
 
-                <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{ImageUrl}})">
-                    {{Title$}}
+        <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{ImageUrl}})">
+          {{Title$}}
 
-                    <template if="{{VideoUrl}}">
-                        <google-youtube videoid="{{VideoUrl}}" height="270px" width="480px"></google-youtube>
-                    </template>
-                </div>
-            </template>
+          <template if="{{VideoUrl}}">
+            <google-youtube videoid="{{VideoUrl}}" height="270px" width="480px"></google-youtube>
+          </template>
+        </div>
+      </template>
 
-            <template repeat="{{Albums}}">
+      <template repeat="{{Albums}}">
 
-                <div onclick="this.templateInstance.model.Focus$ = null" style="width: 200px; height: 200px; background-size: cover; background-image: url({{ImageUrl}})">
-                    {{Title$}}
-                </div>
-            </template>
-                </template>
-            <template if="{{Count == 0}}">
-                <h1>Sorry, nothing found</h1>
-            </template>
-        </template>
-        <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
-        <!--<hot-table datarows="{{Application.Albums}}"></hot-table>-->
+        <div onclick="this.templateInstance.model.Focus$ = null"
+             style="width: 200px; height: 200px; background-size: cover; background-image: url({{ImageUrl}})">
+          {{Title$}}
+        </div>
+      </template>
     </template>
+    <template if="{{Count == 0}}">
+      <h1>Sorry, nothing found</h1>
+    </template>
+  </template>
+  <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
+  <!--<hot-table datarows="{{Application.Albums}}"></hot-table>-->
+</template>
 
-    <puppet-js ref="root" xusewebsocket></puppet-js>
+<puppet-js ref="root" xusewebsocket></puppet-js>
 
 </body>
 </html>
