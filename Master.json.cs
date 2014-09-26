@@ -95,7 +95,7 @@ namespace MusicBrowser
             Handle.GET("/load-data", () =>
             {
                 var count = 0;
-                var limit = 9;
+                var limit = 1000000;
 
                 // Create a reader and move to the content.
                 using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
@@ -178,25 +178,35 @@ namespace MusicBrowser
 
                             foreach (XElement artistElement in element.XPathSelectElements("artists/artist"))
                             {
-                                Artist artist = new Artist();
+                                Int32 id;
+                                string name;
 
-                                node = element.XPathSelectElement("id");
+                                node = artistElement.XPathSelectElement("id");
                                 if (Master.ValueExists(node))
                                 {
-                                    artist.Id = Convert.ToInt32(node.Value);
-                                }
+                                    id = Convert.ToInt32(node.Value);
 
-                                node = element.XPathSelectElement("name");
-                                if (Master.ValueExists(node))
-                                {
-                                    artist.Name = node.Value;
-                                }
+                                    node = artistElement.XPathSelectElement("name");
+                                    if (Master.ValueExists(node))
+                                    {
+                                        name = node.Value;
 
-                                new ReleaseArtist()
-                                {
-                                    Release = release,
-                                    Artist = artist
-                                };
+                                        Artist artist = Db.SQL<Artist>("SELECT a FROM MusicBrowser.Artist a WHERE Id = ?", id).First;
+                                        if (artist == null)
+                                        {
+                                            artist = new Artist()
+                                            {
+                                                Name = name
+                                            };
+                                        }
+
+                                        new ReleaseArtist()
+                                        {
+                                            Release = release,
+                                            Artist = artist
+                                        };
+                                    }
+                                }
                             }
 
                             foreach (XElement imageElement in element.XPathSelectElements("images/image"))
