@@ -108,6 +108,9 @@ namespace MusicBrowser
                 if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "Release_Index").First)
                     Db.SlowSQL("CREATE INDEX Release_Index ON MusicBrowser.Release (Title)");
 
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleasePriorityDesc_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleasePriorityDesc_Index ON MusicBrowser.Release (Priority DESC)");
+
                 if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleasePriority_Index").First)
                     Db.SlowSQL("CREATE INDEX ReleasePriority_Index ON MusicBrowser.Release (Priority)");
 
