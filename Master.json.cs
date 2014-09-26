@@ -55,8 +55,8 @@ namespace MusicBrowser
                 HttpWebRequest myWebClient = (HttpWebRequest)WebRequest.Create(url);
                 myWebClient.Headers.Add("Pragma", "no-cache");
                 myWebClient.Headers.Add("Cache-Control", "no-cache");
-                myWebClient.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
-                myWebClient.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.122 Safari/537.36";
+                myWebClient.Accept = "image/jpeg,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                myWebClient.UserAgent = "Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)";
                 myWebClient.Headers.Add("Accept-Encoding", "gzip,deflate,sdch");
                 myWebClient.Headers.Add("Accept-Language", "en-US,en;q=0.8,pl;q=0.6");
                 myWebClient.Referer = "http://www.discogs.com/";
