@@ -11,7 +11,8 @@
 	ImageUrl: "",
 	Videos: [{
 	  Uri$: "" 
-	}]
+	}],
+	Focus$: null
   }],
   FocusedAlbum: {
     Id: 0,
