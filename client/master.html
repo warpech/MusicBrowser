@@ -10,6 +10,9 @@
     <link rel="import" href="bower_components/puppet-js/src/puppet-js.html">
     <link rel="import" href="bower_components/juicy-jsoneditor/src/juicy-jsoneditor.html">
     <link rel="stylesheet" type="text/css" href="bower_components/jsoneditor/jsoneditor.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="import" href="bower_components/hot-table/src/hot-table.html">
+    <link rel="stylesheet" href="bower_components/jquery-handsontable/dist/jquery.handsontable.full.css">
 </head>
 <body>
     
@@ -19,19 +22,20 @@
 
             <template bind="{{FocusedAlbum}}">
 
-                <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{Image}})">
-                    {{Title}}
+                <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{Image$}})">
+                    {{Title$}}
                 </div>
             </template>
 
             <template repeat="{{Albums}}">
 
-                <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Image}})">
-                    {{Title}}
+                <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Image$}})">
+                    {{Title$}}
                 </div>
             </template>
         </template>
         <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
+        <hot-table datarows="{{Application.Albums}}"></hot-table>
     </template>
 
     <puppet-js ref="root"></puppet-js>

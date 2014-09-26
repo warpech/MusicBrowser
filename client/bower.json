@@ -3,6 +3,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~0.4.0",
     "puppet-js": "~0.0.3",
-    "juicy-jsoneditor": "~0.0.2"
+    "juicy-jsoneditor": "~0.0.2",
+    "hot-table": "~0.1.0"
   }
 }

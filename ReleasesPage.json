@@ -2,32 +2,32 @@
   Query$: "",
   Albums: [{
     Id: 0,
-    Year: 0,
-	Title: "",
+    Year$: 0,
+	Title$: "",
 	Artists: [{
-	  Name: "" 
+	  Name$: "" 
 	}],
 	Images: [{
-	  Uri: "" 
+	  Uri$: "" 
 	}],
-	Image: "",
+	Image$: "",
 	Videos: [{
-	  Uri: "" 
+	  Uri$: "" 
 	}]
   }],
   FocusedAlbum: {
     Id: 0,
-    Year: 0,
-	Title: "",
+    Year$: 0,
+	Title$: "",
 	Artists: [{
-	  Name: "" 
+	  Name$: "" 
 	}],
 	Images: [{
-	  Uri: "" 
+	  Uri$: "" 
 	}],
-	Image: "",
+	Image$: "",
 	Videos: [{
-	  Uri: "" 
+	  Uri$: "" 
 	}]
   }
 }
