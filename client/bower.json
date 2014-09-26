@@ -6,6 +6,7 @@
     "juicy-jsoneditor": "~0.0.2",
     "hot-table": "~0.1.0",
     "google-youtube": "~0.0.7",
-    "img-background": "*"
+    "img-background": "*",
+    "voice-elements": "~0.1.3"
   }
 }
