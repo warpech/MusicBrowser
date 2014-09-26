@@ -1,0 +1,34 @@
+{
+  "name": "img-background",
+  "description": "Place image as a full size background of the site",
+  "authors": [
+    "Edgars Zagorskis"
+  ],
+  "main": "dist/img-background.html",
+  "readme": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/edgarszagorskis/img-background.git"
+  },
+  "keywords": [
+    "web-components"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edgarszagorskis/img-background/issues"
+  },
+  "homepage": "https://github.com/EdgarsZagorskis/img-background",
+  "_release": "2a91b68938",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2a91b689384fc317f4c723d4f575e99429c3287f"
+  },
+  "_source": "git://github.com/EdgarsZagorskis/img-background.git",
+  "_target": "*",
+  "_originalSource": "img-background",
+  "_direct": true
+}

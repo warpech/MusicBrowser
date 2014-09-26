@@ -5,6 +5,7 @@
     "puppet-js": "~0.0.3",
     "juicy-jsoneditor": "~0.0.2",
     "hot-table": "~0.1.0",
-    "google-youtube": "~0.0.7"
+    "google-youtube": "~0.0.7",
+    "img-background": "*"
   }
 }
