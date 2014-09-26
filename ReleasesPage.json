@@ -9,6 +9,7 @@
 	Images: [{
 	  Uri: "" 
 	}],
+	Image: "",
 	Videos: [{
 	  Uri: "" 
 	}]

@@ -38,10 +38,15 @@ namespace MusicBrowser
 
                 foreach (var album in p.Albums)
                 {
-                    foreach (var image in album.Images)
+                    if (album.Images.Count > 0)
                     {
-                        image.Uri = image.Uri.Replace("http://api.discogs.com/images/", "/image/");
-                        image.Uri = image.Uri.Replace("http://s.pixogs.com/image/", "/image/");
+                        album.Image = album.Images[0].Uri;
+                        album.Image = album.Image.Replace("http://api.discogs.com/images/", "/image/");
+                        album.Image = album.Image.Replace("http://s.pixogs.com/image/", "/image/");
+                    }
+                    else
+                    {
+                        album.Image = "/image/default-release.png";
                     }
                 }
 
@@ -51,11 +56,6 @@ namespace MusicBrowser
 
             Handle.GET("/image/{?}", (string ImageId) =>
             {
-                if (ImageId == "")
-                {
-                    ImageId = "default-release.png";
-                }
-
                 var url = "http://s.pixogs.com/image/" + ImageId;
 
                 HttpWebRequest myWebClient = (HttpWebRequest)WebRequest.Create(url);
