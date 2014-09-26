@@ -108,6 +108,12 @@ namespace MusicBrowser
                 if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "Release_Index").First)
                     Db.SlowSQL("CREATE INDEX Release_Index ON MusicBrowser.Release (Title)");
 
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleasePriority_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleasePriority_Index ON MusicBrowser.Release (Priority)");
+
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleasePriorityTitle_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleasePriorityTitle_Index ON MusicBrowser.Release (Priority DESC, Title)");
+
                 if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleaseStyle_Index").First)
                     Db.SlowSQL("CREATE INDEX ReleaseStyle_Index ON MusicBrowser.ReleaseStyle (Release)");
 
@@ -128,7 +134,7 @@ namespace MusicBrowser
             Handle.GET("/load-data", () =>
             {
                 var count = 0;
-                var skip = 44844;
+                var skip = 0;
                 var limit = 50000;
                 //var limit = 1000;
 
@@ -174,7 +180,7 @@ namespace MusicBrowser
                             if (
                                 str.IndexOf("<year") == -1
                             ||
-                                str.IndexOf("Pop") == -1
+                                (str.IndexOf("Funk") == -1 && str.IndexOf("Queen") == -1)
                             ||
                                 str.IndexOf("<video") == -1
                             ||
