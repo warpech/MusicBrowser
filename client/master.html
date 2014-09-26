@@ -40,7 +40,8 @@
       flex-direction: column;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
+      margin: 0.5em 0 0.25em 0;
       text-align: center;
       line-height: 1em;
       color: #fff;
@@ -49,10 +50,14 @@
       text-shadow: 0px 0px 0 rgb(217, 217, 217), 1px 1px 0 rgb(202, 202, 202), 2px 2px 0 rgb(188, 188, 188), 3px 3px 0 rgb(173, 173, 173), 4px 4px 0 rgb(159, 159, 159), 5px 5px 0 rgb(144, 144, 144), 6px 6px 0 rgb(130, 130, 130), 7px 7px 6px rgba(0, 0, 0, 0.6), 7px 7px 1px rgba(0, 0, 0, 0.5), 0px 0px 6px rgba(0, 0, 0, .2);
     }
 
-    h2 {
+    h2, h3 {
       text-align: left;
       font-weight: normal;
       font-size: 120px;
+    }
+
+    h3 {
+      font-size: 100px;
     }
 
     input {
@@ -63,6 +68,10 @@
     juicy-jsoneditor {
       background: white;
       font-size: 24px;
+    }
+
+    img-background /deep/ img {
+      height: 100%;
     }
   </style>
 </head>
@@ -88,23 +97,32 @@
       <div>
 
         <template if="{{Count > 0}}">
-          <div style="display: flex">
+          <div style="display: flex; flex-wrap: wrap; ">
             <template repeat="{{Albums}}">
               <div onclick="this.templateInstance.model.Focus$ = null"
-                   style="display: inline-block; width: 75px; height: 75px; background-size: cover; background-image: url({{ImageUrl}})">
+                   style="display: inline-block; width: 75px; height: 75px; background-size: cover; background-color: black; background-images: url({{ImageUrl}})">
               </div>
             </template>
           </div>
 
           <template bind="{{FocusedAlbum}}">
 
-            <h2>{{Title$}}</h2>
+            <h3>{{Artists[0].Name$}} - {{Title$}}</h3>
 
-            <!--<img-background src="{{ImageUrl}}"></img-background>-->
-            <img src="{{ImageUrl}}">
+            <style>
+              body {
+                background-image: url({{ImageUrl}});
+                background-size: contain;
+              }
+            </style>
+
+            <!--<img-background xstyle="opacity: 0.5" src="{{ImageUrl}}"></img-background>-->
+            <!--<img src="{{ImageUrl}}">-->
 
 
-            <google-youtube videoid="{{VideoUrl}}" height="270px" width="480px"></google-youtube>
+            <google-youtube videoid="{{VideoUrl}}" height="100%" width="100%"></google-youtube>
+
+            <input type="number" value="{{Priority$}}">
           </template>
         </template>
 
