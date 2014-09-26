@@ -92,6 +92,28 @@ namespace MusicBrowser
                 return resp;
             });
 
+            Handle.GET("/create-indexes", () =>
+            {
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "Release_Index").First)
+                    Db.SlowSQL("CREATE INDEX Release_Index ON MusicBrowser.Release (Title)");
+
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleaseStyle_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleaseStyle_Index ON MusicBrowser.ReleaseStyle (Release)");
+
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleaseGenre_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleaseGenre_Index ON MusicBrowser.ReleaseGenre (Release)");
+
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleaseVideo_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleaseVideo_Index ON MusicBrowser.ReleaseVideo (Release)");
+
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleaseArtist_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleaseArtist_Index ON MusicBrowser.ReleaseArtist (Release)");
+
+                if (null == Db.SlowSQL("SELECT i FROM MATERIALIZEDINDEX i WHERE Name = ?", "ReleaseImage_Index").First)
+                    Db.SlowSQL("CREATE INDEX ReleaseImage_Index ON MusicBrowser.ReleaseImage (Release)");
+                return 200;
+            });
+
             Handle.GET("/load-data", () =>
             {
                 var count = 0;
@@ -196,6 +218,7 @@ namespace MusicBrowser
                                         {
                                             artist = new Artist()
                                             {
+                                                Id = id,
                                                 Name = name
                                             };
                                         }

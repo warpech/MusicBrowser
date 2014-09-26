@@ -18,18 +18,22 @@
     
     <template id="root" bind>
         <template bind="{{Application}}">
-            <input type="search" value="{{Query$}}" update-on="input">
+            Total: {{Count}}
+
+            Dat source: Discogs
+
+            <input type="search" value="{{Query$}}" xupdate-on="input">
 
             <template bind="{{FocusedAlbum}}">
 
-                <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{Image$}})">
+                <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{ImageUrl}})">
                     {{Title$}}
                 </div>
             </template>
 
             <template repeat="{{Albums}}">
 
-                <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Image$}})">
+                <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{ImageUrl}})">
                     {{Title$}}
                 </div>
             </template>

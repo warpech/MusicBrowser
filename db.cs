@@ -16,11 +16,16 @@ namespace MusicBrowser
         public Nullable<Int32> Year;
         public string DataQuality;
         public QueryResultRows<Style> Styles { get { return Db.SQL<Style>("SELECT r.Style FROM ReleaseStyle r WHERE r.Release=?", this); } }
+        public Style Style { get { return Db.SQL<Style>("SELECT r.Style FROM ReleaseStyle r WHERE r.Release=? FETCH ?", this, 1).First; } }
         public QueryResultRows<Genre> Genres { get { return Db.SQL<Genre>("SELECT r.Genre FROM ReleaseGenre r WHERE r.Release=?", this); } }
+        public Genre Genre { get { return Db.SQL<Genre>("SELECT r.Genre FROM ReleaseGenre r WHERE r.Release=? FETCH ?", this, 1).First; } }
         public QueryResultRows<Video> Videos { get { return Db.SQL<Video>("SELECT r.Video FROM ReleaseVideo r WHERE r.Release=?", this); } }
+        public Video Video { get { return Db.SQL<Video>("SELECT r.Video FROM ReleaseVideo r WHERE r.Release=? FETCH ?", this, 1).First; } }
         public QueryResultRows<Artist> Artists { get { return Db.SQL<Artist>("SELECT r.Artist FROM ReleaseArtist r WHERE r.Release=?", this); } }
+        public Artist Artist { get { return Db.SQL<Artist>("SELECT r.Artist FROM ReleaseArtist r WHERE r.Release=? FETCH ?", this, 1).First; } }
         public QueryResultRows<Image> Images { get { return Db.SQL<Image>("SELECT r.Image FROM ReleaseImage r WHERE r.Release=?", this); } }
-    }
+        public Image Image { get { return Db.SQL<Image>("SELECT r.Image FROM ReleaseImage r WHERE r.Release=? FETCH ?", this, 1).First; } }
+        }
 
     [Database]
     public class ReleaseStyle

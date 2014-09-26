@@ -7,10 +7,7 @@
 	Artists: [{
 	  Name$: "" 
 	}],
-	Images: [{
-	  Uri$: "" 
-	}],
-	Image$: "",
+	ImageUrl: "",
 	Videos: [{
 	  Uri$: "" 
 	}]
@@ -22,10 +19,7 @@
 	Artists: [{
 	  Name$: "" 
 	}],
-	Images: [{
-	  Uri$: "" 
-	}],
-	Image$: "",
+	ImageUrl: "",
 	Videos: [{
 	  Uri$: "" 
 	}]

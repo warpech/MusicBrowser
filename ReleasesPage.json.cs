@@ -7,7 +7,7 @@ namespace MusicBrowser
     {
         public void SearchQuery(string query)
         {
-            var limit = 50;
+            var limit = 10;
 
             if (query != "")
             {
@@ -20,28 +20,30 @@ namespace MusicBrowser
                 Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ? OFFSET ?", limit - 1, 1);
             }
 
-            if (FocusedAlbum.Images.Count > 0)
+            var data = (Release)FocusedAlbum.Data;
+            if (data.Image != null)
             {
-                FocusedAlbum.Image = FocusedAlbum.Images[0].Uri;
-                FocusedAlbum.Image = FocusedAlbum.Image.Replace("http://api.discogs.com/images/", "/image/");
-                FocusedAlbum.Image = FocusedAlbum.Image.Replace("http://s.pixogs.com/image/", "/image/");
+                FocusedAlbum.ImageUrl = data.Image.Uri;
+                FocusedAlbum.ImageUrl = FocusedAlbum.ImageUrl.Replace("http://api.discogs.com/images/", "/image/");
+                FocusedAlbum.ImageUrl = FocusedAlbum.ImageUrl.Replace("http://s.pixogs.com/image/", "/image/");
             }
             else
             {
-                FocusedAlbum.Image = "/image/default-release.png";
+                FocusedAlbum.ImageUrl = "/image/default-release.png";
             }
 
             foreach (var album in Albums)
             {
-                if (album.Images.Count > 0)
+                data = (Release)album.Data;
+                if (data.Image != null)
                 {
-                    album.Image = album.Images[0].Uri;
-                    album.Image = album.Image.Replace("http://api.discogs.com/images/", "/image/");
-                    album.Image = album.Image.Replace("http://s.pixogs.com/image/", "/image/");
+                    album.ImageUrl = data.Image.Uri;
+                    album.ImageUrl = album.ImageUrl.Replace("http://api.discogs.com/images/", "/image/");
+                    album.ImageUrl = album.ImageUrl.Replace("http://s.pixogs.com/image/", "/image/");
                 }
                 else
                 {
-                    album.Image = "/image/default-release.png";
+                    album.ImageUrl = "/image/default-release.png";
                 }
             }
         }
