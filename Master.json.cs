@@ -128,7 +128,15 @@ namespace MusicBrowser
             Handle.GET("/load-data", () =>
             {
                 var count = 0;
-                var limit = 1000000;
+                var skip = 44844;
+                var limit = 50000;
+                //var limit = 1000;
+
+                var untilTitle = "";
+
+                var importGenres = false;
+                var importStyles = false;
+                var onlyFullInfo = true;
 
                 // Create a reader and move to the content.
                 using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
@@ -137,25 +145,59 @@ namespace MusicBrowser
                     // Create a LINQ to XML tree from it.
                     nodeReader.MoveToContent();
 
-                    Db.Transaction(() =>
+                    if (skip == 0)
                     {
-                        Db.SlowSQL("DELETE FROM MusicBrowser.Release");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseStyle");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseGenre");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseVideo");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseArtist");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseImage");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.Style");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.Genre");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.Video");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.Artist");
-                        Db.SlowSQL("DELETE FROM MusicBrowser.Image");
-                    });
+                        Db.Transaction(() =>
+                        {
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Release");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseStyle");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseGenre");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseVideo");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseArtist");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.ReleaseImage");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Style");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Genre");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Video");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Artist");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Image");
+                        });
+                    }
 
                     bool isOnNode = nodeReader.ReadToDescendant("master");
                     while (isOnNode)
                     {
                         var element = (XElement)XNode.ReadFrom(nodeReader);
+
+                        if (onlyFullInfo)
+                        {
+                            var str = element.ToString();
+                            if (
+                                str.IndexOf("<year") == -1
+                            ||
+                                str.IndexOf("Pop") == -1
+                            ||
+                                str.IndexOf("<video") == -1
+                            ||
+                                str.IndexOf("<image") == -1
+                                )
+                            {
+                                if (!nodeReader.IsStartElement("master"))
+                                    isOnNode = nodeReader.ReadToNextSibling("master");
+
+                                continue;
+                            }
+                        }
+
+                        count++;
+
+                        if (count < skip)
+                        {
+                            if (!nodeReader.IsStartElement("master"))
+                                isOnNode = nodeReader.ReadToNextSibling("master");
+
+                            continue;
+                        }
+
                         var t = new Transaction();
 
                         t.Add(() =>
@@ -259,61 +301,67 @@ namespace MusicBrowser
                                 };
                             }
 
-                            foreach (XElement styleElement in element.XPathSelectElements("styles/style"))
+                            if (importStyles)
                             {
-                                String name = styleElement.Value;
-
-                                Style style = Db.SQL<Style>("SELECT s FROM MusicBrowser.Style s WHERE Name = ?", name).First;
-                                if (style == null)
+                                foreach (XElement styleElement in element.XPathSelectElements("styles/style"))
                                 {
-                                    style = new Style()
+                                    String name = styleElement.Value;
+
+                                    Style style = Db.SQL<Style>("SELECT s FROM MusicBrowser.Style s WHERE Name = ?", name).First;
+                                    if (style == null)
                                     {
-                                        Name = name
+                                        style = new Style()
+                                        {
+                                            Name = name
+                                        };
+                                    }
+
+                                    new ReleaseStyle()
+                                    {
+                                        Release = release,
+                                        Style = style
                                     };
                                 }
-
-                                new ReleaseStyle()
-                                {
-                                    Release = release,
-                                    Style = style
-                                };
                             }
 
-                            foreach (XElement genreElement in element.XPathSelectElements("genres/genre"))
+                            if (importGenres)
                             {
-                                String name = genreElement.Value;
-
-                                Genre genre = Db.SQL<Genre>("SELECT s FROM MusicBrowser.Genre s WHERE Name = ?", name).First;
-                                if (genre == null)
+                                foreach (XElement genreElement in element.XPathSelectElements("genres/genre"))
                                 {
-                                    genre = new Genre()
+                                    String name = genreElement.Value;
+
+                                    Genre genre = Db.SQL<Genre>("SELECT s FROM MusicBrowser.Genre s WHERE Name = ?", name).First;
+                                    if (genre == null)
                                     {
-                                        Name = name
+                                        genre = new Genre()
+                                        {
+                                            Name = name
+                                        };
+                                    }
+
+                                    new ReleaseGenre()
+                                    {
+                                        Release = release,
+                                        Genre = genre
                                     };
                                 }
-
-                                new ReleaseGenre()
-                                {
-                                    Release = release,
-                                    Genre = genre
-                                };
                             }
                         });
 
-                        foreach (XElement e in element.DescendantsAndSelf())
-                        {
-                            Debug.WriteLine("{0}{1}",
-                                ("".PadRight(e.Ancestors().Count() * 2) + e.Name).PadRight(20),
-                                (e.Value).PadRight(5));
-                        }
-
                         t.Commit();
+
+                        if (untilTitle.Length > 0)
+                        {
+                            if (element.XPathSelectElement("title").Value == untilTitle)
+                            {
+                                break;
+                            }
+                        }
 
                         if (!nodeReader.IsStartElement("master"))
                             isOnNode = nodeReader.ReadToNextSibling("master");
 
-                        count++;
-                        if (count == limit)
+                        if (count == limit + skip)
                         {
                             break;
                         }

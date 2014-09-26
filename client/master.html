@@ -31,8 +31,8 @@
                 <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{ImageUrl}})">
                     {{Title$}}
 
-                    <template if="{{Video.Uri}}">
-                        <google-youtube videoid="{{Video.Uri}}" height="270px" width="480px"></google-youtube>
+                    <template if="{{VideoUrl}}">
+                        <google-youtube videoid="{{VideoUrl}}" height="270px" width="480px"></google-youtube>
                     </template>
                 </div>
             </template>
@@ -49,10 +49,10 @@
             </template>
         </template>
         <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
-        <hot-table datarows="{{Application.Albums}}"></hot-table>
+        <!--<hot-table datarows="{{Application.Albums}}"></hot-table>-->
     </template>
 
-    <puppet-js ref="root" usewebsocket></puppet-js>
+    <puppet-js ref="root" xusewebsocket></puppet-js>
 
 </body>
 </html>

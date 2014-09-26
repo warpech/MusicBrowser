@@ -10,59 +10,93 @@ namespace MusicBrowser
         {
             var limit = 10;
 
-            Count = 0;
+            QueryResultRows<Release> albums;
             if (query != "")
             {
-                FocusedAlbum.Data = (Release)Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ?", "%" + query + "%", 1).First;
-                if (FocusedAlbum.Data != null)
+                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ? OFFSET ?", query + "%", limit, 1);
+                if (albums.First != null)
                 {
-                    Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ? OFFSET ?", "%" + query + "%", limit - 1, 1);
-                    Count = 1 + Albums.Count;
+                    Albums = albums;
                 }
+                else
+                {
+                    for (int i = Convert.ToInt32(Albums.Count) - 1; i >= 0; i--)
+                    {
+                        Albums.RemoveAt(i);
+                    }
+                }
+                Count = (long)Albums.Count;
             }
             else
             {
-                FocusedAlbum.Data = (Release)Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 1).First;
-                if (FocusedAlbum.Data != null)
-                {
-                    Count = 1 + Db.SlowSQL<long>("SELECT COUNT(*) FROM MusicBrowser.Release m").First;
-                    Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ? OFFSET ?", limit - 1, 1);
-                }
+                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ? OFFSET ?", limit, 1);
+                Albums = albums;
+                Count = (long)Db.SlowSQL<long>("SELECT COUNT(*) FROM MusicBrowser.Release m").First;
             }
+
+            FocusAlbum((Release)albums.First);
 
             var data = (Release)FocusedAlbum.Data;
             if (data != null)
             {
-                if (data.Image != null)
+                foreach (var album in Albums)
                 {
-                    FocusedAlbum.ImageUrl = data.Image.Uri;
-                    FocusedAlbum.ImageUrl = FocusedAlbum.ImageUrl.Replace("http://api.discogs.com/images/", "/image/");
-                    FocusedAlbum.ImageUrl = FocusedAlbum.ImageUrl.Replace("http://s.pixogs.com/image/", "/image/");
+                    data = (Release)album.Data;
+                    album.ImageUrl = FixImageUrl(data.Image, true);
+                }
+            }
+        }
+
+        public string FixImageUrl(Image image, bool small)
+        {
+            string url;
+            if (image != null)
+            {
+                if (small == true)
+                {
+                    url = image.Uri150;
                 }
                 else
                 {
-                    FocusedAlbum.ImageUrl = "/image/default-release.png";
+                    url = image.Uri;
                 }
+                url = url.Replace("http://api.discogs.com/images/", "/image/");
+                url = url.Replace("http://s.pixogs.com/image/", "/image/");
             }
-
-            foreach (var album in Albums)
+            else
             {
-                data = (Release)album.Data;
-                if (data.Image != null)
-                {
-                    album.ImageUrl = data.Image.Uri150;
-                    album.ImageUrl = album.ImageUrl.Replace("http://api.discogs.com/images/", "/image/");
-                    album.ImageUrl = album.ImageUrl.Replace("http://s.pixogs.com/image/", "/image/");
-                }
-                else
-                {
-                    album.ImageUrl = "/image/default-release.png";
-                }
+                url = "/image/default-release.png";
             }
+            return url;
+        }
 
-            if (data.Video != null)
+        public string FixVideoUrl(Video video)
+        {
+            string url;
+            if (video != null)
             {
-                this.FocusedAlbum.Video.Uri = this.FocusedAlbum.Video.Uri.Replace("http://www.youtube.com/watch?v=", "");
+                url = video.Uri;
+                url = url.Replace("http://www.youtube.com/watch?v=", "");
+            }
+            else
+            {
+                url = "";
+            }
+            return url;
+        }
+
+        public void FocusAlbum(Release album)
+        {
+            FocusedAlbum.Data = album;
+            if (album != null)
+            {
+                FocusedAlbum.ImageUrl = FixImageUrl(album.Image, false);
+                FocusedAlbum.VideoUrl = FixVideoUrl(album.Video);
+            }
+            else
+            {
+                FocusedAlbum.ImageUrl = "";
+                FocusedAlbum.VideoUrl = "";
             }
         }
 
@@ -75,5 +109,14 @@ namespace MusicBrowser
     [ReleasesPage_json.FocusedAlbum]
     partial class ReleasesPageFocusedAlbum : Json, IBound<Release>
     {
+    }
+
+    [ReleasesPage_json.Albums]
+    partial class ReleasesPageAlbum : Json, IBound<Release>
+    {
+        void Handle(Input.Focus input)
+        {
+            ((ReleasesPage)Parent.Parent).FocusAlbum((Release)Data);
+        }
     }
 }
