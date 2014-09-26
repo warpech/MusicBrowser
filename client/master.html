@@ -14,15 +14,17 @@
 <body>
     
     <template id="root" bind>
+        <template bind="{{Application}}">
+            <input type="search" value="{{Query$}}" update-on="input">
 
-        <template repeat="{{Application.Albums}}">
-            <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Image}})">
-                {{Title}} [{{Image}}]
-            </div>
+            <template repeat="{{Albums}}">
+
+                <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Image}})">
+                    {{Title}} [{{Image}}]
+                </div>
+            </template>
         </template>
-
-        <juicy-jsoneditor json="{{Application}}"></juicy-jsoneditor>
-
+        <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
     </template>
 
     <puppet-js ref="root"></puppet-js>

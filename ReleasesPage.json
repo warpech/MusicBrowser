@@ -1,4 +1,5 @@
 {
+  Query$: "",
   Albums: [{
     Id: 0,
     Year: 0,

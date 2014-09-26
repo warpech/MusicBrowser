@@ -34,22 +34,7 @@ namespace MusicBrowser
             {
                 Master m = Master.GET("/master");
                 ReleasesPage p = new ReleasesPage();
-                p.Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 50);
-
-                foreach (var album in p.Albums)
-                {
-                    if (album.Images.Count > 0)
-                    {
-                        album.Image = album.Images[0].Uri;
-                        album.Image = album.Image.Replace("http://api.discogs.com/images/", "/image/");
-                        album.Image = album.Image.Replace("http://s.pixogs.com/image/", "/image/");
-                    }
-                    else
-                    {
-                        album.Image = "/image/default-release.png";
-                    }
-                }
-
+                p.SearchQuery("");
                 m.Application = p;
                 return m;
             });
