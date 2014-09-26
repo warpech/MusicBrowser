@@ -24,6 +24,7 @@
 
             <input type="search" value="{{Query$}}" xupdate-on="input">
 
+            <template if="{{Count > 0}}">
             <template bind="{{FocusedAlbum}}">
 
                 <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{ImageUrl}})">
@@ -37,12 +38,16 @@
                     {{Title$}}
                 </div>
             </template>
+                </template>
+            <template if="{{Count == 0}}">
+                <h1>Sorry, nothing found</h1>
+            </template>
         </template>
         <juicy-jsoneditor json="{{}}"></juicy-jsoneditor>
         <hot-table datarows="{{Application.Albums}}"></hot-table>
     </template>
 
-    <puppet-js ref="root"></puppet-js>
+    <puppet-js ref="root" usewebsocket></puppet-js>
 
 </body>
 </html>

@@ -88,6 +88,8 @@ namespace MusicBrowser
                         }
                     }
                 }
+
+                resp.CacheControl = "max-age=99936000, public";
                 
                 return resp;
             });

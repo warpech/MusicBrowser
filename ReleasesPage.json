@@ -1,5 +1,6 @@
 {
   Query$: "",
+  Count: 0,
   Albums: [{
     Id: 0,
     Year$: 0,
