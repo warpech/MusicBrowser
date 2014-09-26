@@ -58,6 +58,11 @@ namespace MusicBrowser
                     album.ImageUrl = "/image/default-release.png";
                 }
             }
+
+            if (data.Video != null)
+            {
+                this.FocusedAlbum.Video.Uri = this.FocusedAlbum.Video.Uri.Replace("http://www.youtube.com/watch?v=", "");
+            }
         }
 
         void Handle(Input.Query input)

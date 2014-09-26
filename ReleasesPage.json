@@ -21,8 +21,8 @@
 	  Name$: "" 
 	}],
 	ImageUrl: "",
-	Videos: [{
-	  Uri$: "" 
-	}]
+	Video: {
+	  Uri: "" 
+	}
   }
 }

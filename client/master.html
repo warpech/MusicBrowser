@@ -13,6 +13,7 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <link rel="import" href="bower_components/hot-table/src/hot-table.html">
     <link rel="stylesheet" href="bower_components/jquery-handsontable/dist/jquery.handsontable.full.css">
+    <link rel="import" href="bower_components/google-youtube/google-youtube.html">
 </head>
 <body>
     
@@ -29,6 +30,10 @@
 
                 <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{ImageUrl}})">
                     {{Title$}}
+
+                    <template if="{{Video.Uri}}">
+                        <google-youtube videoid="{{Video.Uri}}" height="270px" width="480px"></google-youtube>
+                    </template>
                 </div>
             </template>
 
