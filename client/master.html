@@ -17,10 +17,17 @@
         <template bind="{{Application}}">
             <input type="search" value="{{Query$}}" update-on="input">
 
+            <template bind="{{FocusedAlbum}}">
+
+                <div style="width: 400px; height: 400px; background-size: cover; background-image: url({{Image}})">
+                    {{Title}}
+                </div>
+            </template>
+
             <template repeat="{{Albums}}">
 
                 <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Image}})">
-                    {{Title}} [{{Image}}]
+                    {{Title}}
                 </div>
             </template>
         </template>

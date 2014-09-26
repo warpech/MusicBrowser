@@ -11,11 +11,24 @@ namespace MusicBrowser
 
             if (query != "")
             {
-                Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ?", "%" + query + "%", limit);
+                FocusedAlbum.Data = (Release)Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ?", "%" + query + "%", 1).First;
+                Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? FETCH ? OFFSET ?", "%" + query + "%", limit - 1, 1);
             }
             else
             {
-                Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", limit);
+                FocusedAlbum.Data = (Release)Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 1).First;
+                Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ? OFFSET ?", limit - 1, 1);
+            }
+
+            if (FocusedAlbum.Images.Count > 0)
+            {
+                FocusedAlbum.Image = FocusedAlbum.Images[0].Uri;
+                FocusedAlbum.Image = FocusedAlbum.Image.Replace("http://api.discogs.com/images/", "/image/");
+                FocusedAlbum.Image = FocusedAlbum.Image.Replace("http://s.pixogs.com/image/", "/image/");
+            }
+            else
+            {
+                FocusedAlbum.Image = "/image/default-release.png";
             }
 
             foreach (var album in Albums)
@@ -37,5 +50,10 @@ namespace MusicBrowser
         {
             SearchQuery(input.Value);
         }
+    }
+
+    [ReleasesPage_json.FocusedAlbum]
+    partial class ReleasesPageFocusedAlbum : Json, IBound<Release>
+    {
     }
 }

@@ -14,5 +14,20 @@
 	Videos: [{
 	  Uri: "" 
 	}]
-  }]
+  }],
+  FocusedAlbum: {
+    Id: 0,
+    Year: 0,
+	Title: "",
+	Artists: [{
+	  Name: "" 
+	}],
+	Images: [{
+	  Uri: "" 
+	}],
+	Image: "",
+	Videos: [{
+	  Uri: "" 
+	}]
+  }
 }
