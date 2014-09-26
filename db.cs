@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +25,7 @@ namespace MusicBrowser
         public Artist Artist { get { return Db.SQL<Artist>("SELECT r.Artist FROM ReleaseArtist r WHERE r.Release=? FETCH ?", this, 1).First; } }
         public QueryResultRows<Image> Images { get { return Db.SQL<Image>("SELECT r.Image FROM ReleaseImage r WHERE r.Release=?", this); } }
         public Image Image { get { return Db.SQL<Image>("SELECT r.Image FROM ReleaseImage r WHERE r.Release=? FETCH ?", this, 1).First; } }
-        }
+    }
 
     [Database]
     public class ReleaseStyle
