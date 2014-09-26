@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using System.IO;
 using System.Diagnostics;
+using System.Net;
 
 namespace MusicBrowser
 {
@@ -33,13 +34,14 @@ namespace MusicBrowser
             {
                 Master m = Master.GET("/master");
                 ReleasesPage p = new ReleasesPage();
-                p.Releases = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 50);
+                p.Albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r FETCH ?", 50);
 
-                foreach (var release in p.Releases)
+                foreach (var album in p.Albums)
                 {
-                    foreach (var image in release.Images)
+                    foreach (var image in album.Images)
                     {
-                        image.Uri = image.Uri.Replace("http://api.discogs.com/images/", "http://s.pixogs.com/image/");
+                        image.Uri = image.Uri.Replace("http://api.discogs.com/images/", "/image/");
+                        image.Uri = image.Uri.Replace("http://s.pixogs.com/image/", "/image/");
                     }
                 }
 
@@ -47,10 +49,68 @@ namespace MusicBrowser
                 return m;
             });
 
+            Handle.GET("/image/{?}", (string ImageId) =>
+            {
+                if (ImageId == "")
+                {
+                    ImageId = "default-release.png";
+                }
+
+                var url = "http://s.pixogs.com/image/" + ImageId;
+
+                HttpWebRequest myWebClient = (HttpWebRequest)WebRequest.Create(url);
+                myWebClient.Headers.Add("Pragma", "no-cache");
+                myWebClient.Headers.Add("Cache-Control", "no-cache");
+                myWebClient.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+                myWebClient.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.122 Safari/537.36";
+                myWebClient.Headers.Add("Accept-Encoding", "gzip,deflate,sdch");
+                myWebClient.Headers.Add("Accept-Language", "en-US,en;q=0.8,pl;q=0.6");
+                myWebClient.Referer = "http://www.discogs.com/";
+
+                HttpWebResponse myWebResponse = (HttpWebResponse)myWebClient.GetResponse();
+                MemoryStream memoryStream = new MemoryStream(0x10000);
+                Byte[] data = null;
+                try
+                {
+                    using (Stream responseStream = myWebResponse.GetResponseStream())
+                    {
+                        byte[] buffer = new byte[0x1000];
+                        int bytes;
+                        while ((bytes = responseStream.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            memoryStream.Write(buffer, 0, bytes);
+                        }
+                    }
+                    data = memoryStream.ToArray();
+                }
+                catch (Exception e)
+                {
+                }
+
+                Response resp = new Response();
+
+                if (data != null)
+                {
+                    resp.BodyBytes = data;
+
+                    WebHeaderCollection myWebHeaderCollection = myWebResponse.Headers;
+                    for (int i = 0; i < myWebHeaderCollection.Count; i++)
+                    {
+                        if (myWebHeaderCollection.GetKey(i) == "Content-Type")
+                        {
+                            resp.ContentType = myWebHeaderCollection.Get(i);
+                            break;
+                        }
+                    }
+                }
+                
+                return resp;
+            });
+
             Handle.GET("/load-data", () =>
             {
                 var count = 0;
-                var limit = 5;
+                var limit = 9;
 
                 // Create a reader and move to the content.
                 using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
@@ -234,4 +294,9 @@ namespace MusicBrowser
             });
         }
     }
+
+
+
+    
 }
+

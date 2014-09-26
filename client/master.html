@@ -14,7 +14,15 @@
 <body>
     
     <template id="root" bind>
+
+        <template repeat="{{Application.Albums}}">
+            <div style="width: 200px; height: 200px; background-size: cover; background-image: url({{Images[0].Uri}})">
+                {{Title}} [{{Images[0].Uri}}]
+            </div>
+        </template>
+
         <juicy-jsoneditor json="{{Application}}"></juicy-jsoneditor>
+
     </template>
 
     <puppet-js ref="root"></puppet-js>
