@@ -44,7 +44,7 @@
           <div style="display: flex; flex-wrap: wrap; ">
             <template repeat="{{Albums}}">
               <div onclick="this.templateInstance.model.Focus$ = null"
-                   style="display: inline-block; width: 75px; height: 75px; background-size: cover; background-color: black; background-images: url({{ImageUrl}})">
+                   style="display: inline-block; width: 75px; height: 75px; background-size: cover; background-color: black; background-image: url({{ImageUrl}})">
               </div>
             </template>
           </div>
@@ -61,7 +61,6 @@
             </style>
 
             <!--<img src="{{ImageUrl}}">-->
-
 
             <google-youtube videoid="{{VideoUrl}}" height="100%" width="100%"></google-youtube>
 
