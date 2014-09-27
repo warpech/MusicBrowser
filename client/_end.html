@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8"/>
+  <title>MusicBrowser</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="bower_components/platform/platform.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/puppet-js/src/puppet-js.html">
+</head>
+<body>
+
+<div class="center">
+
+  <template id="root" bind>
+
+    <template bind="{{Application}}">
+
+      <!-- thanks -->
+      <h3><strong>@warpech<br>
+        @Starcounter</strong><br>
+        @Web_Components<br>
+        customelements.io</h3>
+    </template>
+  </template>
+
+  <puppet-js ref="root"></puppet-js>
+</div>
+
+</body>
+</html>
