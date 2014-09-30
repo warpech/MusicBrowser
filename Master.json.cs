@@ -138,16 +138,19 @@ namespace MusicBrowser
             {
                 var count = 0;
                 var skip = 0;
-                var limit = 50000;
+                var limit = 1000000;
                 //var limit = 1000;
 
                 var untilTitle = "";
 
                 var importGenres = false;
                 var importStyles = false;
-                var onlyFullInfo = true;
+                var onlyFullInfo = false;
+
+                Console.WriteLine("Importing records from XML...");
 
                 // Create a reader and move to the content.
+                // download XML from http://www.discogs.com/data/discogs_20140901_masters.xml.gz (98 MB compressed)
                 using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
                 {
                     // the reader must be in the Interactive state in order to
@@ -357,6 +360,11 @@ namespace MusicBrowser
                             }
                         });
 
+                        if (count % 1000 == 0)
+                        {
+                            Console.WriteLine("Adding " + count);
+                        }
+
                         t.Commit();
 
                         if (untilTitle.Length > 0)
@@ -376,6 +384,7 @@ namespace MusicBrowser
                         }
                     }
                 }
+                Console.WriteLine("Import finished");
                 return 200;
             });
         }
