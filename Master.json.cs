@@ -147,7 +147,11 @@ namespace MusicBrowser
                 var importStyles = false;
                 var onlyFullInfo = false;
 
-                Console.WriteLine("Importing records from XML...");
+                var dbsession = new DbSession();
+                dbsession.RunSync(() =>
+                {
+                    Console.WriteLine("Importing records from XML...");
+                });
 
                 // Create a reader and move to the content.
                 // download XML from http://www.discogs.com/data/discogs_20140901_masters.xml.gz (98 MB compressed)
@@ -360,9 +364,14 @@ namespace MusicBrowser
                             }
                         });
 
-                        if (count % 1000 == 0)
+                        if (count % 10000 == 0)
                         {
-                            Console.WriteLine("Adding " + count);
+                            dbsession.RunSync(() =>
+                            {
+                                Console.WriteLine("Adding " + count);
+                            }
+                            );
+                            
                         }
 
                         t.Commit();
@@ -384,7 +393,10 @@ namespace MusicBrowser
                         }
                     }
                 }
-                Console.WriteLine("Import finished");
+                dbsession.RunSync(() =>
+                {
+                    Console.WriteLine("Import finished");
+                });
                 return 200;
             });
         }
