@@ -29,7 +29,7 @@
 	  Uri$: "" 
 	}],
 	ImageUrl: "",
-	VideoUrl: "",
+	VideoId: "",
 	Priority$: 0
   }
 }

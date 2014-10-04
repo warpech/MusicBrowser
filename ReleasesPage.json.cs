@@ -57,7 +57,7 @@ namespace MusicBrowser
             }
             else
             {
-                limit = 50;
+                limit = 24;
                 albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r ORDER BY Priority DESC FETCH ?", limit);
                 Albums = albums;
                 Count = (long)Db.SlowSQL<long>("SELECT COUNT(*) FROM MusicBrowser.Release m").First;
@@ -120,12 +120,12 @@ namespace MusicBrowser
             if (album != null)
             {
                 FocusedAlbum.ImageUrl = FixImageUrl(album.Image, false);
-                FocusedAlbum.VideoUrl = FixVideoUrl(album.Video);
+                FocusedAlbum.VideoId = FixVideoUrl(album.Video);
             }
             else
             {
                 FocusedAlbum.ImageUrl = "";
-                FocusedAlbum.VideoUrl = "";
+                FocusedAlbum.VideoId = "";
             }
         }
 
