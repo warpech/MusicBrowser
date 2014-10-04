@@ -21,6 +21,13 @@
 	Artists: [{
 	  Name: "" 
 	}],
+	Images: [{
+	  Uri$: "",
+	  Uri150$: "" 
+	}],
+	Videos: [{
+	  Uri$: "" 
+	}],
 	ImageUrl: "",
 	VideoUrl: "",
 	Priority$: 0
