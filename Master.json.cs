@@ -147,11 +147,8 @@ namespace MusicBrowser
                 var importStyles = false;
                 var onlyFullInfo = false;
 
-                var dbsession = new DbSession();
-                dbsession.RunSync(() =>
-                {
-                    Console.WriteLine("Importing records from XML...");
-                });
+                StreamWriter filewriter = File.AppendText("log.txt");
+                Log("Importing records from XML...", filewriter);
 
                 // Create a reader and move to the content.
                 // download XML from http://www.discogs.com/data/discogs_20140901_masters.xml.gz (98 MB compressed)
@@ -364,14 +361,9 @@ namespace MusicBrowser
                             }
                         });
 
-                        if (count % 10000 == 0)
+                        if (count % 1000 == 0)
                         {
-                            dbsession.RunSync(() =>
-                            {
-                                Console.WriteLine("Adding " + count);
-                            }
-                            );
-                            
+                            Log("Adding " + count, filewriter);
                         }
 
                         t.Commit();
@@ -393,17 +385,16 @@ namespace MusicBrowser
                         }
                     }
                 }
-                dbsession.RunSync(() =>
-                {
-                    Console.WriteLine("Import finished");
-                });
+                Log("Import finished", filewriter);
                 return 200;
             });
         }
+        
+        public static void Log(string logMessage, TextWriter w)
+        {
+            w.WriteLine(DateTime.Now.ToString("o") + "\t" + logMessage);
+            w.FlushAsync();
+        }
     }
-
-
-
-    
 }
 
