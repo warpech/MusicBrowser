@@ -30,6 +30,7 @@
         <input value="{{Query$}}">
         <voice-recognition id="rec" text="{{Query$}}"></voice-recognition>
         <button onclick="document.getElementById('rec').start()">REC</button>
+        <button onclick="document.getElementById('rec').stop()">Stop</button>
       </div>
 
       <div>
@@ -54,7 +55,8 @@
           <google-youtube
             videoid="{{VideoUrl}}"
             height="100%"
-            width="100%">
+            width="100%"
+            autoplay="1">
           </google-youtube>
 
           <input type="number" value="{{Priority$}}">

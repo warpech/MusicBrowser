@@ -4,48 +4,48 @@
   "Albums": [
     {
       "Id": 572389,
-      "Year$": 2012,
-      "Title$": "Red",
+      "Year": 2012,
+      "Title": "Red",
       "Artists": [
         {
-          "Name$": "Taylor Swift"
+          "Name": "Taylor Swift"
         }
       ],
       "ImageUrl": "/image/R-150-4709386-1372965355-1321.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=Zlot0i3Zykw"
+          "Uri": "http://www.youtube.com/watch?v=Zlot0i3Zykw"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 47010,
-      "Year$": 1982,
-      "Title$": "FB3",
+      "Year": 1982,
+      "Title": "FB3",
       "Artists": [
         {
-          "Name$": "Fun Boy Three"
+          "Name": "Fun Boy Three"
         }
       ],
       "ImageUrl": "/image/R-150-2248128-1290248778.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=ASx_aPbVJDM"
+          "Uri": "http://www.youtube.com/watch?v=ASx_aPbVJDM"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=P8JBgqrW18E"
+          "Uri": "http://www.youtube.com/watch?v=P8JBgqrW18E"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 481966,
-      "Year$": 1990,
-      "Title$": "III",
+      "Year": 1990,
+      "Title": "III",
       "Artists": [
         {
-          "Name$": "Kraken (8)"
+          "Name": "Kraken (8)"
         }
       ],
       "ImageUrl": "/image/R-150-2311863-1381629212-2439.jpeg",
@@ -54,11 +54,11 @@
     },
     {
       "Id": 394210,
-      "Year$": 1965,
-      "Title$": "Me",
+      "Year": 1965,
+      "Title": "Me",
       "Artists": [
         {
-          "Name$": "Sandie Shaw"
+          "Name": "Sandie Shaw"
         }
       ],
       "ImageUrl": "/image/R-150-2624664-1293818913.jpeg",
@@ -67,31 +67,31 @@
     },
     {
       "Id": 290919,
-      "Year$": 1978,
-      "Title$": "Cry",
+      "Year": 1978,
+      "Title": "Cry",
       "Artists": [
         {
-          "Name$": "John Klemmer"
+          "Name": "John Klemmer"
         }
       ],
       "ImageUrl": "/image/R-150-1623790-1290386209.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=xpUVW925Vuo"
+          "Uri": "http://www.youtube.com/watch?v=xpUVW925Vuo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=9mjGAg_uWOE"
+          "Uri": "http://www.youtube.com/watch?v=9mjGAg_uWOE"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 326407,
-      "Year$": 1988,
-      "Title$": "Elis",
+      "Year": 1988,
+      "Title": "Elis",
       "Artists": [
         {
-          "Name$": "Sadao Watanabe"
+          "Name": "Sadao Watanabe"
         }
       ],
       "ImageUrl": "/image/R-150-2649781-1335320102.jpeg",
@@ -100,37 +100,37 @@
     },
     {
       "Id": 482909,
-      "Year$": 1966,
-      "Title$": "FG",
+      "Year": 1966,
+      "Title": "FG",
       "Artists": [
         {
-          "Name$": "France Gall"
+          "Name": "France Gall"
         }
       ],
       "ImageUrl": "/image/R-150-3779697-1344106775-8683.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=U3yIPTzj4uo"
+          "Uri": "http://www.youtube.com/watch?v=U3yIPTzj4uo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=o5NudmrDaVw"
+          "Uri": "http://www.youtube.com/watch?v=o5NudmrDaVw"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=4X3VPxgIlLo"
+          "Uri": "http://www.youtube.com/watch?v=4X3VPxgIlLo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=rfJN5yTCDac"
+          "Uri": "http://www.youtube.com/watch?v=rfJN5yTCDac"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 153620,
-      "Year$": 1983,
-      "Title$": "Live",
+      "Year": 1983,
+      "Title": "Live",
       "Artists": [
         {
-          "Name$": "Gary Moore"
+          "Name": "Gary Moore"
         }
       ],
       "ImageUrl": "/image/R-150-2745058-1335887834.jpeg",
@@ -139,11 +139,11 @@
     },
     {
       "Id": 4764,
-      "Year$": 1993,
-      "Title$": "Star",
+      "Year": 1993,
+      "Title": "Star",
       "Artists": [
         {
-          "Name$": "Belly"
+          "Name": "Belly"
         }
       ],
       "ImageUrl": "/image/R-150-594627-1217701013.jpeg",
@@ -152,110 +152,110 @@
     },
     {
       "Id": 32046,
-      "Year$": 1993,
-      "Title$": "Show",
+      "Year": 1993,
+      "Title": "Show",
       "Artists": [
         {
-          "Name$": "Cure, The"
+          "Name": "Cure, The"
         }
       ],
       "ImageUrl": "/image/R-150-1004498-1393199784-8861.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=YRuU0k21iOI"
+          "Uri": "http://www.youtube.com/watch?v=YRuU0k21iOI"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=suYPHagzghU"
+          "Uri": "http://www.youtube.com/watch?v=suYPHagzghU"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 50355,
-      "Year$": 1987,
-      "Title$": "VI",
+      "Year": 1987,
+      "Title": "VI",
       "Artists": [
         {
-          "Name$": "Circle Jerks"
+          "Name": "Circle Jerks"
         }
       ],
       "ImageUrl": "/image/R-150-458376-1116334260.jpg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=gX0KilNJQvs"
+          "Uri": "http://www.youtube.com/watch?v=gX0KilNJQvs"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=CF8aVJChz9s"
+          "Uri": "http://www.youtube.com/watch?v=CF8aVJChz9s"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=TDPAlV-E3Zk"
+          "Uri": "http://www.youtube.com/watch?v=TDPAlV-E3Zk"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=3W14FJuQXhs"
+          "Uri": "http://www.youtube.com/watch?v=3W14FJuQXhs"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=SIsf28vWU0U"
+          "Uri": "http://www.youtube.com/watch?v=SIsf28vWU0U"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=n2u4MkoAMj0"
+          "Uri": "http://www.youtube.com/watch?v=n2u4MkoAMj0"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=P9RuNhFZND4"
+          "Uri": "http://www.youtube.com/watch?v=P9RuNhFZND4"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=NV42uXC3jbc"
+          "Uri": "http://www.youtube.com/watch?v=NV42uXC3jbc"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 143454,
-      "Year$": 1995,
-      "Title$": "On",
+      "Year": 1995,
+      "Title": "On",
       "Artists": [
         {
-          "Name$": "Echobelly"
+          "Name": "Echobelly"
         }
       ],
       "ImageUrl": "/image/R-150-382881-1234042480.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=CAKsWxJLfD0"
+          "Uri": "http://www.youtube.com/watch?v=CAKsWxJLfD0"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=8iG6s5W5kOY"
+          "Uri": "http://www.youtube.com/watch?v=8iG6s5W5kOY"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=noHFuXwmtIo"
+          "Uri": "http://www.youtube.com/watch?v=noHFuXwmtIo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=6vEXs-Dah80"
+          "Uri": "http://www.youtube.com/watch?v=6vEXs-Dah80"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=_5w6Xl6UtN4"
+          "Uri": "http://www.youtube.com/watch?v=_5w6Xl6UtN4"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=WxA32rF2npo"
+          "Uri": "http://www.youtube.com/watch?v=WxA32rF2npo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=QEyeYWEn6LQ"
+          "Uri": "http://www.youtube.com/watch?v=QEyeYWEn6LQ"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=mQNgcrjRb3Y"
+          "Uri": "http://www.youtube.com/watch?v=mQNgcrjRb3Y"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=epqZrkxZ3_o"
+          "Uri": "http://www.youtube.com/watch?v=epqZrkxZ3_o"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 718369,
-      "Year$": 1989,
-      "Title$": "Joy",
+      "Year": 1989,
+      "Title": "Joy",
       "Artists": [
         {
-          "Name$": "Crystal Lewis"
+          "Name": "Crystal Lewis"
         }
       ],
       "ImageUrl": "/image/R-150-845617-1164782836.jpeg",
@@ -264,11 +264,11 @@
     },
     {
       "Id": 484263,
-      "Year$": 2012,
-      "Title$": "Era",
+      "Year": 2012,
+      "Title": "Era",
       "Artists": [
         {
-          "Name$": "Elvenking"
+          "Name": "Elvenking"
         }
       ],
       "ImageUrl": "/image/R-150-3973590-1351034238-6376.jpeg",
@@ -277,11 +277,11 @@
     },
     {
       "Id": 494426,
-      "Year$": 2007,
-      "Title$": "Demo",
+      "Year": 2007,
+      "Title": "Demo",
       "Artists": [
         {
-          "Name$": "Hostage Calm"
+          "Name": "Hostage Calm"
         }
       ],
       "ImageUrl": "/image/R-150-5981854-1408135999-3684.jpeg",
@@ -290,37 +290,37 @@
     },
     {
       "Id": 723796,
-      "Year$": 2013,
-      "Title$": "Five",
+      "Year": 2013,
+      "Title": "Five",
       "Artists": [
         {
-          "Name$": "Fran Hartnett"
+          "Name": "Fran Hartnett"
         },
         {
-          "Name$": "Stanislav Tolkachev"
+          "Name": "Stanislav Tolkachev"
         }
       ],
       "ImageUrl": "/image/R-150-5023098-1382390222-9627.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=OftbLCx5Go0"
+          "Uri": "http://www.youtube.com/watch?v=OftbLCx5Go0"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=RQcNJKRFwA8"
+          "Uri": "http://www.youtube.com/watch?v=RQcNJKRFwA8"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=qXLCDCqgX3k"
+          "Uri": "http://www.youtube.com/watch?v=qXLCDCqgX3k"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 288162,
-      "Year$": 2002,
-      "Title$": "Sinch",
+      "Year": 2002,
+      "Title": "Sinch",
       "Artists": [
         {
-          "Name$": "Sinch"
+          "Name": "Sinch"
         }
       ],
       "ImageUrl": "/image/R-150-375498-1105364226.jpg",
@@ -329,31 +329,31 @@
     },
     {
       "Id": 129893,
-      "Year$": 1984,
-      "Title$": "Shine",
+      "Year": 1984,
+      "Title": "Shine",
       "Artists": [
         {
-          "Name$": "Frida"
+          "Name": "Frida"
         }
       ],
       "ImageUrl": "/image/R-150-1116795-1313593621.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=hdGaOWTeXYs"
+          "Uri": "http://www.youtube.com/watch?v=hdGaOWTeXYs"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=Q-OVKBar5lk"
+          "Uri": "http://www.youtube.com/watch?v=Q-OVKBar5lk"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 275689,
-      "Year$": 1983,
-      "Title$": "Storm",
+      "Year": 1983,
+      "Title": "Storm",
       "Artists": [
         {
-          "Name$": "Maynard Ferguson"
+          "Name": "Maynard Ferguson"
         }
       ],
       "ImageUrl": "/image/R-150-2080937-1262904456.jpeg",
@@ -362,31 +362,31 @@
     },
     {
       "Id": 214245,
-      "Year$": 1970,
-      "Title$": "Poco",
+      "Year": 1970,
+      "Title": "Poco",
       "Artists": [
         {
-          "Name$": "Poco (3)"
+          "Name": "Poco (3)"
         }
       ],
       "ImageUrl": "/image/R-150-1870389-1382481350-6408.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=dbHDvTgkxpo"
+          "Uri": "http://www.youtube.com/watch?v=dbHDvTgkxpo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=0VxL_O87MAs"
+          "Uri": "http://www.youtube.com/watch?v=0VxL_O87MAs"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 433590,
-      "Year$": 1995,
-      "Title$": "Tales",
+      "Year": 1995,
+      "Title": "Tales",
       "Artists": [
         {
-          "Name$": "Marcus Miller"
+          "Name": "Marcus Miller"
         }
       ],
       "ImageUrl": "/image/R-150-859098-1262457724.jpeg",
@@ -395,11 +395,11 @@
     },
     {
       "Id": 710857,
-      "Year$": 1997,
-      "Title$": "Hugo",
+      "Year": 1997,
+      "Title": "Hugo",
       "Artists": [
         {
-          "Name$": "Hugo (29)"
+          "Name": "Hugo (29)"
         }
       ],
       "ImageUrl": "/image/R-150-4712633-1392989722-9428.jpeg",
@@ -408,14 +408,14 @@
     },
     {
       "Id": 725278,
-      "Year$": 1999,
-      "Title$": "Power",
+      "Year": 1999,
+      "Title": "Power",
       "Artists": [
         {
-          "Name$": "Calvin Bridges"
+          "Name": "Calvin Bridges"
         },
         {
-          "Name$": "Oslo Gospel Choir"
+          "Name": "Oslo Gospel Choir"
         }
       ],
       "ImageUrl": "/image/R-150-5995599-1408826918-5344.jpeg",
@@ -424,40 +424,40 @@
     },
     {
       "Id": 58977,
-      "Year$": 1980,
-      "Title$": "A-Z",
+      "Year": 1980,
+      "Title": "A-Z",
       "Artists": [
         {
-          "Name$": "Colin Newman"
+          "Name": "Colin Newman"
         }
       ],
       "ImageUrl": "/image/R-150-5915821-1406227598-8487.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=nOAV98R2Qdo"
+          "Uri": "http://www.youtube.com/watch?v=nOAV98R2Qdo"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=pt3jASQyKeA"
+          "Uri": "http://www.youtube.com/watch?v=pt3jASQyKeA"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=nP_prz8aPKQ"
+          "Uri": "http://www.youtube.com/watch?v=nP_prz8aPKQ"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=tLV8pBmH7dI"
+          "Uri": "http://www.youtube.com/watch?v=tLV8pBmH7dI"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=-FOuY7af5xY"
+          "Uri": "http://www.youtube.com/watch?v=-FOuY7af5xY"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 722080,
-      "Year$": 2013,
-      "Title$": "Masks",
+      "Year": 2013,
+      "Title": "Masks",
       "Artists": [
         {
-          "Name$": "Eyes Set To Kill"
+          "Name": "Eyes Set To Kill"
         }
       ],
       "ImageUrl": "/image/R-150-5972698-1407767594-8062.jpeg",
@@ -466,31 +466,31 @@
     },
     {
       "Id": 297891,
-      "Year$": 2011,
-      "Title$": "ZAZ",
+      "Year": 2011,
+      "Title": "ZAZ",
       "Artists": [
         {
-          "Name$": "ZAZ"
+          "Name": "ZAZ"
         }
       ],
       "ImageUrl": "/image/R-150-3321687-1325691486.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=zUwpuoZMIqc"
+          "Uri": "http://www.youtube.com/watch?v=zUwpuoZMIqc"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=Lg8K7ge9sKo"
+          "Uri": "http://www.youtube.com/watch?v=Lg8K7ge9sKo"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 223182,
-      "Year$": 1989,
-      "Title$": "Dig?",
+      "Year": 1989,
+      "Title": "Dig?",
       "Artists": [
         {
-          "Name$": "Bill Bruford's Earthworks"
+          "Name": "Bill Bruford's Earthworks"
         }
       ],
       "ImageUrl": "/image/R-150-1401515-1216565554.jpeg",
@@ -499,17 +499,17 @@
     },
     {
       "Id": 524937,
-      "Year$": 1994,
-      "Title$": "Madar",
+      "Year": 1994,
+      "Title": "Madar",
       "Artists": [
         {
-          "Name$": "Ustad Shaukat Hussain"
+          "Name": "Ustad Shaukat Hussain"
         },
         {
-          "Name$": "Anouar Brahem"
+          "Name": "Anouar Brahem"
         },
         {
-          "Name$": "Jan Garbarek"
+          "Name": "Jan Garbarek"
         }
       ],
       "ImageUrl": "/image/R-150-4809396-1376208877-2357.jpeg",
@@ -518,11 +518,11 @@
     },
     {
       "Id": 721045,
-      "Year$": 2002,
-      "Title$": "Motel",
+      "Year": 2002,
+      "Title": "Motel",
       "Artists": [
         {
-          "Name$": "Ninefold"
+          "Name": "Ninefold"
         }
       ],
       "ImageUrl": "/image/default-release.png",
@@ -531,31 +531,31 @@
     },
     {
       "Id": 326755,
-      "Year$": 1993,
-      "Title$": "Envy",
+      "Year": 1993,
+      "Title": "Envy",
       "Artists": [
         {
-          "Name$": "Eve's Plum"
+          "Name": "Eve's Plum"
         }
       ],
       "ImageUrl": "/image/R-150-415283-1206846203.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=8iw7kg1d78I"
+          "Uri": "http://www.youtube.com/watch?v=8iw7kg1d78I"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=q7T6C24Gui4"
+          "Uri": "http://www.youtube.com/watch?v=q7T6C24Gui4"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 404723,
-      "Year$": 1993,
-      "Title$": "Show",
+      "Year": 1993,
+      "Title": "Show",
       "Artists": [
         {
-          "Name$": "Cure, The"
+          "Name": "Cure, The"
         }
       ],
       "ImageUrl": "/image/R-150-1814102-1298545452.jpeg",
@@ -564,11 +564,11 @@
     },
     {
       "Id": 595813,
-      "Year$": 2013,
-      "Title$": "Whole",
+      "Year": 2013,
+      "Title": "Whole",
       "Artists": [
         {
-          "Name$": "SOiL (2)"
+          "Name": "SOiL (2)"
         }
       ],
       "ImageUrl": "/image/R-150-4878455-1378241335-5079.jpeg",
@@ -577,11 +577,11 @@
     },
     {
       "Id": 445031,
-      "Year$": 2012,
-      "Title$": "Vices",
+      "Year": 2012,
+      "Title": "Vices",
       "Artists": [
         {
-          "Name$": "Dopamines, The"
+          "Name": "Dopamines, The"
         }
       ],
       "ImageUrl": "/image/R-150-5981335-1408010164-1103.jpeg",
@@ -590,14 +590,14 @@
     },
     {
       "Id": 722523,
-      "Year$": 2012,
-      "Title$": "Split",
+      "Year": 2012,
+      "Title": "Split",
       "Artists": [
         {
-          "Name$": "Forrest"
+          "Name": "Forrest"
         },
         {
-          "Name$": "Winter Passing, The"
+          "Name": "Winter Passing, The"
         }
       ],
       "ImageUrl": "/image/R-150-5997265-1408397555-2651.jpeg",
@@ -606,95 +606,95 @@
     },
     {
       "Id": 35607,
-      "Year$": 1980,
-      "Title$": "Drama",
+      "Year": 1980,
+      "Title": "Drama",
       "Artists": [
         {
-          "Name$": "Yes"
+          "Name": "Yes"
         }
       ],
       "ImageUrl": "/image/R-150-61131-1240983858.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=I4x4cVzE7Xs"
+          "Uri": "http://www.youtube.com/watch?v=I4x4cVzE7Xs"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 726105,
-      "Year$": 2013,
-      "Title$": "Zero",
+      "Year": 2013,
+      "Title": "Zero",
       "Artists": [
         {
-          "Name$": "Subjected"
+          "Name": "Subjected"
         }
       ],
       "ImageUrl": "/image/R-150-6026699-1409158379-9294.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=wE1KiUfJOYE"
+          "Uri": "http://www.youtube.com/watch?v=wE1KiUfJOYE"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=OuizE7RV0oc"
+          "Uri": "http://www.youtube.com/watch?v=OuizE7RV0oc"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=4fcDA6F4ugg"
+          "Uri": "http://www.youtube.com/watch?v=4fcDA6F4ugg"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=NPCP5-5FZHc"
+          "Uri": "http://www.youtube.com/watch?v=NPCP5-5FZHc"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=FLYe9zZz7JA"
+          "Uri": "http://www.youtube.com/watch?v=FLYe9zZz7JA"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=EU-WdYEEjlk"
+          "Uri": "http://www.youtube.com/watch?v=EU-WdYEEjlk"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=5IlAUkW1m-U"
+          "Uri": "http://www.youtube.com/watch?v=5IlAUkW1m-U"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=GobeW1v9uQs"
+          "Uri": "http://www.youtube.com/watch?v=GobeW1v9uQs"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=P3xl1Kfn-iU"
+          "Uri": "http://www.youtube.com/watch?v=P3xl1Kfn-iU"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=6eSQ8Iq6Snw"
+          "Uri": "http://www.youtube.com/watch?v=6eSQ8Iq6Snw"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 434850,
-      "Year$": 2012,
-      "Title$": "Bloom",
+      "Year": 2012,
+      "Title": "Bloom",
       "Artists": [
         {
-          "Name$": "Beach House"
+          "Name": "Beach House"
         }
       ],
       "ImageUrl": "/image/R-150-3572666-1404053896-2785.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=Uvwl7INZykc"
+          "Uri": "http://www.youtube.com/watch?v=Uvwl7INZykc"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=FuvWc3ToDHg"
+          "Uri": "http://www.youtube.com/watch?v=FuvWc3ToDHg"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=OS6duOoxctw"
+          "Uri": "http://www.youtube.com/watch?v=OS6duOoxctw"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 724449,
-      "Year$": 2013,
-      "Title$": "Latin",
+      "Year": 2013,
+      "Title": "Latin",
       "Artists": [
         {
-          "Name$": "AquAdro"
+          "Name": "AquAdro"
         }
       ],
       "ImageUrl": "/image/R-150-6013228-1408817331-8806.jpeg",
@@ -703,11 +703,11 @@
     },
     {
       "Id": 541710,
-      "Year$": 1978,
-      "Title$": "Battlement",
+      "Year": 1978,
+      "Title": "Battlement",
       "Artists": [
         {
-          "Name$": "Neuschwanstein"
+          "Name": "Neuschwanstein"
         }
       ],
       "ImageUrl": "/image/default-release.png",
@@ -716,11 +716,11 @@
     },
     {
       "Id": 438307,
-      "Year$": 2012,
-      "Title$": "Blown Away",
+      "Year": 2012,
+      "Title": "Blown Away",
       "Artists": [
         {
-          "Name$": "Carrie Underwood"
+          "Name": "Carrie Underwood"
         }
       ],
       "ImageUrl": "/image/R-150-3615174-1337610434-3029.jpeg",
@@ -729,14 +729,14 @@
     },
     {
       "Id": 717594,
-      "Year$": 1999,
-      "Title$": "Cattle Call",
+      "Year": 1999,
+      "Title": "Cattle Call",
       "Artists": [
         {
-          "Name$": "LeAnn Rimes"
+          "Name": "LeAnn Rimes"
         },
         {
-          "Name$": "Eddy Arnold"
+          "Name": "Eddy Arnold"
         }
       ],
       "ImageUrl": "/image/R-150-5954348-1407269253-2802.jpeg",
@@ -745,11 +745,11 @@
     },
     {
       "Id": 539992,
-      "Year$": 1976,
-      "Title$": "Meditazione",
+      "Year": 1976,
+      "Title": "Meditazione",
       "Artists": [
         {
-          "Name$": "Massimo Ranieri"
+          "Name": "Massimo Ranieri"
         }
       ],
       "ImageUrl": "/image/R-150-2184729-1310513500.jpeg",
@@ -758,45 +758,45 @@
     },
     {
       "Id": 60980,
-      "Year$": 1985,
-      "Title$": "In Mysterious Ways",
+      "Year": 1985,
+      "Title": "In Mysterious Ways",
       "Artists": [
         {
-          "Name$": "John Foxx"
+          "Name": "John Foxx"
         }
       ],
       "ImageUrl": "/image/R-150-5964842-1407573953-9926.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=IOJ2y4tz3tM"
+          "Uri": "http://www.youtube.com/watch?v=IOJ2y4tz3tM"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 211854,
-      "Year$": 1967,
-      "Title$": "How Great Thou Art",
+      "Year": 1967,
+      "Title": "How Great Thou Art",
       "Artists": [
         {
-          "Name$": "Elvis Presley"
+          "Name": "Elvis Presley"
         }
       ],
       "ImageUrl": "/image/R-150-5969535-1407684099-4107.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=Nf0vJiyeLIo"
+          "Uri": "http://www.youtube.com/watch?v=Nf0vJiyeLIo"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 713315,
-      "Year$": 1977,
-      "Title$": "Spirits In The Night",
+      "Year": 1977,
+      "Title": "Spirits In The Night",
       "Artists": [
         {
-          "Name$": "Manfred Mann's Earth Band"
+          "Name": "Manfred Mann's Earth Band"
         }
       ],
       "ImageUrl": "/image/R-150-3634589-1406373860-6567.jpeg",
@@ -805,11 +805,11 @@
     },
     {
       "Id": 232271,
-      "Year$": 1968,
-      "Title$": "We Are The Levitts",
+      "Year": 1968,
+      "Title": "We Are The Levitts",
       "Artists": [
         {
-          "Name$": "Levitts"
+          "Name": "Levitts"
         }
       ],
       "ImageUrl": "/image/R-150-5939720-1406867565-1085.jpeg",
@@ -818,11 +818,11 @@
     },
     {
       "Id": 724082,
-      "Year$": 0,
-      "Title$": "Insomnia / The Truth",
+      "Year": 0,
+      "Title": "Insomnia / The Truth",
       "Artists": [
         {
-          "Name$": "Vital Elements"
+          "Name": "Vital Elements"
         }
       ],
       "ImageUrl": "/image/R-150-5976576-1408732276-7619.jpeg",
@@ -831,11 +831,11 @@
     },
     {
       "Id": 727734,
-      "Year$": 2013,
-      "Title$": "Radiate",
+      "Year": 2013,
+      "Title": "Radiate",
       "Artists": [
         {
-          "Name$": "Jack Johnson"
+          "Name": "Jack Johnson"
         }
       ],
       "ImageUrl": "/image/default-release.png",
@@ -844,43 +844,43 @@
     },
     {
       "Id": 165782,
-      "Year$": 2009,
-      "Title$": "Better Ways To Die",
+      "Year": 2009,
+      "Title": "Better Ways To Die",
       "Artists": [
         {
-          "Name$": "Death Before Dishonor"
+          "Name": "Death Before Dishonor"
         }
       ],
       "ImageUrl": "/image/R-150-1878285-1249635770.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=NBFCv7_DbGE"
+          "Uri": "http://www.youtube.com/watch?v=NBFCv7_DbGE"
         }
       ],
       "Focus$": null
     },
     {
       "Id": 31056,
-      "Year$": 2005,
-      "Title$": "This Godless Endeavor",
+      "Year": 2005,
+      "Title": "This Godless Endeavor",
       "Artists": [
         {
-          "Name$": "Nevermore"
+          "Name": "Nevermore"
         }
       ],
       "ImageUrl": "/image/R-150-1250054-1317697662.jpeg",
       "Videos": [
         {
-          "Uri$": "http://www.youtube.com/watch?v=ddK7KqO9om8"
+          "Uri": "http://www.youtube.com/watch?v=ddK7KqO9om8"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=O2e832DJkzQ"
+          "Uri": "http://www.youtube.com/watch?v=O2e832DJkzQ"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=XVCiggfDMWY"
+          "Uri": "http://www.youtube.com/watch?v=XVCiggfDMWY"
         },
         {
-          "Uri$": "http://www.youtube.com/watch?v=5PWDF0QA70g"
+          "Uri": "http://www.youtube.com/watch?v=5PWDF0QA70g"
         }
       ],
       "Focus$": null
@@ -888,11 +888,11 @@
   ],
   "FocusedAlbum": {
     "Id": 572389,
-    "Year$": 2012,
-    "Title$": "Red",
+    "Year": 2012,
+    "Title": "Red",
     "Artists": [
       {
-        "Name$": "Taylor Swift"
+        "Name": "Taylor Swift"
       }
     ],
     "ImageUrl": "/image/R-4709386-1372965355-1321.jpeg",
