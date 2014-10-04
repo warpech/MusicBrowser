@@ -173,6 +173,8 @@ namespace MusicBrowser
                             Db.SlowSQL("DELETE FROM MusicBrowser.Video");
                             Db.SlowSQL("DELETE FROM MusicBrowser.Artist");
                             Db.SlowSQL("DELETE FROM MusicBrowser.Image");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.Search");
+                            Db.SlowSQL("DELETE FROM MusicBrowser.SearchRelease");
                         });
                     }
 
@@ -186,8 +188,8 @@ namespace MusicBrowser
                             var str = element.ToString();
                             if (
                                 str.IndexOf("<year") == -1
-                            ||
-                                (str.IndexOf("Funk") == -1 && str.IndexOf("Queen") == -1)
+                           /* ||
+                                (str.IndexOf("Funk") == -1 && str.IndexOf("Queen") == -1)*/
                             ||
                                 str.IndexOf("<video") == -1
                             ||

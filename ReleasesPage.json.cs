@@ -13,8 +13,35 @@ namespace MusicBrowser
             QueryResultRows<Release> albums;
             if (query != "")
             {
-                limit = 20;
-                albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? ORDER BY Priority DESC FETCH ?", "%" + query + "%", limit);
+                Search search = Db.SQL<Search>("SELECT s FROM MusicBrowser.Search s WHERE s.Query LIKE ? FETCH ?", query, 1).First;
+
+                if (search == null)
+                {
+                    limit = 10;
+                    albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? ORDER BY Priority DESC FETCH ?", "%" + query + "%", limit);
+
+                    var t = new Transaction();
+                    t.Add(() =>
+                    {
+                        search = new Search();
+                        search.Query = query;
+
+                        foreach (Release album in albums)
+                        {
+                            new SearchRelease()
+                            {
+                                Search = search,
+                                Release = album
+                            };
+                        }
+                    });
+                    t.Commit();
+                }
+                else
+                {
+                    albums = search.Releases;
+                }
+                
                 if (albums.First != null)
                 {
                     Albums = albums;

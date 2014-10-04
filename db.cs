@@ -100,4 +100,18 @@ namespace MusicBrowser
         public Nullable<Int32> Height;
         public Nullable<Int32> Width;
     }
+
+    [Database]
+    public class Search
+    {
+        public string Query;
+        public QueryResultRows<Release> Releases { get { return Db.SQL<Release>("SELECT s.Release FROM SearchRelease s WHERE s.Search=?", this); } }
+    }
+
+    [Database]
+    public class SearchRelease
+    {
+        public Search Search;
+        public Release Release;
+    }
 }
