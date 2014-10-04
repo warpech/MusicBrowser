@@ -3,7 +3,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~0.4.0",
     "puppet-js": "~0.0.3",
-    "juicy-jsoneditor": "~0.0.2",
+    "juicy-jsoneditor": "gh-pages",
     "hot-table": "~0.1.0",
     "google-youtube": "~0.0.7",
     "img-background": "*",

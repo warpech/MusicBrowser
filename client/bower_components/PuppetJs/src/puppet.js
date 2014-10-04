@@ -1,4 +1,4 @@
-/*! puppet.js 0.2.3
+/*! puppet.js 0.2.4
  * (c) 2013 Joachim Wester
  * MIT license
  */
@@ -6,6 +6,7 @@
 (function (global) {
   var lastClickHandler
     , lastPopstateHandler
+    , lastPushstateHandler
     , lastBlurHandler
     , lastPuppet;
 
@@ -120,10 +121,12 @@
     if (lastClickHandler) {
       document.body.removeEventListener('click', lastClickHandler);
       window.removeEventListener('popstate', lastPopstateHandler);
+      window.removeEventListener('puppet-redirect-pushstate', lastPushstateHandler);
       document.body.removeEventListener('blur', lastBlurHandler, true);
     }
     document.body.addEventListener('click', lastClickHandler = this.clickHandler.bind(this));
     window.addEventListener('popstate', lastPopstateHandler = this.historyHandler.bind(this)); //better here than in constructor, because Chrome triggers popstate on page load
+    window.addEventListener('puppet-redirect-pushstate', lastPushstateHandler = this.historyHandler.bind(this));
     document.body.addEventListener('blur', lastBlurHandler = this.sendLocalChange.bind(this), true);
 
     if (!lastPuppet) {

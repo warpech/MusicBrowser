@@ -37,7 +37,6 @@
     "commit": "d9ea8b0982381e06c7e1018fcb1a29e90ed8a3fc"
   },
   "_source": "git://github.com/GoogleWebComponents/google-youtube.git",
-  "_target": "~0.0.8",
-  "_originalSource": "google-youtube",
-  "_direct": true
+  "_target": "~0.0.7",
+  "_originalSource": "google-youtube"
 }

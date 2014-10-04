@@ -28,7 +28,7 @@ Or [download as ZIP](https://github.com/juicy/juicy-jsoneditor/archive/master.zi
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/juicy-jsoneditor/dist/juicy-jsoneditor.html">
+    <link rel="import" href="bower_components/juicy-jsoneditor/src/juicy-jsoneditor.html">
     <!-- josdejong/jsoneditor#104 workaround-->
     <link rel="stylesheet" type="text/css" href="bower_components/jsoneditor/jsoneditor.min.css">
     ```
@@ -49,6 +49,7 @@ Attribute      | Options            | Default  | Description
 `name`         | *String*           |          | Object name, see [API](https://github.com/josdejong/jsoneditor/blob/master/docs/api.md#constructor)
 `search`       | *Boolean*          | `true`   | Toggle search box, see [API](https://github.com/josdejong/jsoneditor/blob/master/docs/api.md#constructor)
 `indentation`  | *Number*           | `2`      | Indentation, see [API](https://github.com/josdejong/jsoneditor/blob/master/docs/api.md#constructor)
+`history`      | *Boolean*          | `true`   | Toggle history - undo, redo, see [API](https://github.com/josdejong/jsoneditor/blob/master/docs/api.md#constructor)
 
 ## Properties
 All attributes, plus:
