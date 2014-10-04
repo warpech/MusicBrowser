@@ -369,7 +369,7 @@ The standard set of [YouTube player events](https://developers.google.com/youtub
         this.durationformatted = this.toHHMMSS(0);
 
         if (this.player && this.player.cueVideoById) {
-          this.player.cueVideoById(this.videoid);
+          this.player.loadVideoById(this.videoid);
         } else {
           this.pendingVideoId = this.videoid;
         }
