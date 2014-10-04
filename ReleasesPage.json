@@ -3,23 +3,23 @@
   Count: 0,
   Albums: [{
     Id: 0,
-    Year$: 0,
-	Title$: "",
+    Year: 0,
+	Title: "",
 	Artists: [{
-	  Name$: "" 
+	  Name: "" 
 	}],
 	ImageUrl: "",
 	Videos: [{
-	  Uri$: "" 
+	  Uri: "" 
 	}],
 	Focus$: null
   }],
   FocusedAlbum: {
     Id: 0,
-    Year$: 0,
-	Title$: "",
+    Year: 0,
+	Title: "",
 	Artists: [{
-	  Name$: "" 
+	  Name: "" 
 	}],
 	ImageUrl: "",
 	VideoUrl: "",
