@@ -18,7 +18,7 @@ namespace MusicBrowser
                 if (search == null)
                 {
                     limit = 10;
-                    albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? ORDER BY Priority DESC FETCH ?", "%" + query + "%", limit);
+                    albums = Db.SQL<Release>("SELECT r FROM MusicBrowser.Release r WHERE Title LIKE ? ORDER BY Priority DESC FETCH ?", query + "%", limit);
 
                     var t = new Transaction();
                     t.Add(() =>
