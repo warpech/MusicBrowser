@@ -152,7 +152,8 @@ namespace MusicBrowser
 
                 // Create a reader and move to the content.
                 // download XML from http://www.discogs.com/data/discogs_20140901_masters.xml.gz (98 MB compressed)
-                using (XmlReader nodeReader = XmlReader.Create("C:\\Starcounter Projects\\MusicBrowser\\data\\discogs_20140901_masters.xml"))
+
+                using (XmlReader nodeReader = XmlReader.Create(Starcounter.Application.Current.WorkingDirectory + "..\\data\\discogs_masters.xml"))
                 {
                     // the reader must be in the Interactive state in order to
                     // Create a LINQ to XML tree from it.
