@@ -3,8 +3,6 @@ MusicBrowser
 
 Simple MusicBrowser that uses Web Components/Polymer on the frontend and Starcounter/Discogs.com on the backend
 
-![screenshot](https://cloud.githubusercontent.com/assets/566463/4526983/1c3cd65c-4d64-11e4-849a-b4218c0b5880.png)
-
 Created for the purpose of live coding with Web Components at [Meet.js Summit 2014](http://summit.meetjs.pl/2014/) and [WebCamp Zagreb 2014](http://2014.webcampzg.org/)
 
 ## Installation
@@ -24,3 +22,7 @@ Go to [http://localhost:8080/load-data](http://localhost:8080/load-data) to star
 ### 3. Run the app
 
 Go to [http://localhost:8080/](http://localhost:8080/)
+
+The working app looks like this:
+
+![screenshot](https://cloud.githubusercontent.com/assets/566463/4526983/1c3cd65c-4d64-11e4-849a-b4218c0b5880.png)
