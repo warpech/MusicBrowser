@@ -138,14 +138,14 @@ namespace MusicBrowser
             {
                 var count = 0;
                 var skip = 0;
-                var limit = 1000000;
+                var limit = 10000;
                 //var limit = 1000;
 
                 var untilTitle = "";
 
                 var importGenres = false;
                 var importStyles = false;
-                var onlyFullInfo = false;
+                var onlyFullInfo = true;
 
                 StreamWriter filewriter = File.AppendText("log.txt");
                 Log("Importing records from XML...", filewriter);
@@ -389,6 +389,7 @@ namespace MusicBrowser
                     }
                 }
                 Log("Import finished", filewriter);
+                filewriter.Close();
                 return 200;
             });
         }
@@ -396,7 +397,7 @@ namespace MusicBrowser
         public static void Log(string logMessage, TextWriter w)
         {
             w.WriteLine(DateTime.Now.ToString("o") + "\t" + logMessage);
-            w.FlushAsync();
+            w.Flush();
         }
     }
 }
